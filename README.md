@@ -262,7 +262,7 @@ https://www.figma.com/file/cBDVGdqQxUuVlQp3ehW7wx/Recipes-App
 
 - Serão `10` dias de projeto.
 
-- Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
+- Data de entrega para avaliação final do projeto: `28/03/2022 14:00`.
 
 ---
 
@@ -271,9 +271,9 @@ https://www.figma.com/file/cBDVGdqQxUuVlQp3ehW7wx/Recipes-App
 ### Antes de começar a desenvolver:
 
 1. Clone o repositório
-  * `git clone git@github.com:tryber/sd-0x-project-recipes-app.git`
+  * `git clone git@github.com:tryber/sd-017-project-recipes-app.git`
   * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-0x-project-recipes-app`
+    * `cd sd-017-project-recipes-app`
   * Vá para a branch do seu grupo, com `git checkout main-group-XX && git pull`, onde `XX` é o número do seu grupo. Exemplos: `main-group-1`, `main-group-22`.
 
 2. Instale as dependências e inicialize o projeto
@@ -307,7 +307,7 @@ https://www.figma.com/file/cBDVGdqQxUuVlQp3ehW7wx/Recipes-App
   * Usando o exemplo anterior: `git push -u origin main-group-XX-cria-campo-de-input`
 
 6. Crie um novo `Pull Request` _(PR)_
-  * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-project-recipes-app/pulls)
+  * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-017-project-recipes-app/pulls)
   * Clique no botão verde _"New pull request"_
   * Clique na caixa de seleção _"Compare"_ e escolha a branch do grupo, `main-group-XX`, e a sua branch **com atenção**
   * Coloque um título para a sua _Pull Request_
@@ -315,7 +315,7 @@ https://www.figma.com/file/cBDVGdqQxUuVlQp3ehW7wx/Recipes-App
   * Clique no botão verde _"Create pull request"_
   * Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
   * **Não se preocupe em preencher mais nada por enquanto!**
-  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-project-recipes-app/pulls) e confira que o seu _Pull Request_ está criado
+  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-017-project-recipes-app/pulls) e confira que o seu _Pull Request_ está criado
 
 7. Assim que aprovado por pelo menos duas pessoas do seu grupo e o _Linter_ estiver adereçado, acesse **SEU** _Pull Request_ e clique no botão _"Merge pull request"_
 
@@ -1741,7 +1741,7 @@ Para sinalizar que o seu projeto está pronto para o _"Code Review"_ dos seus co
 
   * No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**;
 
-  * No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-0x`.
+  * No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-017`.
 
 Caso tenha alguma dúvida, [aqui tem um video explicativo](https://vimeo.com/362189205).
 
