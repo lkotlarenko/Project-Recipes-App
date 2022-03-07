@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../../components/Header';
+import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 
 function FoodMain() {
   return (
     <div>
-      <Header name="Foods" />
+      <HeaderWithSearch name="Foods" />
       <h3>FoodMain</h3>
     </div>
   );

@@ -1,8 +1,12 @@
 import React from 'react';
+import HeaderNoSearch from '../../components/Header/HeaderNoSearch';
 
 function DoneRecipes() {
   return (
-    <div>DoneRecipes</div>
+    <div>
+      <HeaderNoSearch name="Done Recipes" />
+      <h3>DoneRecipes</h3>
+    </div>
   );
 }
 
