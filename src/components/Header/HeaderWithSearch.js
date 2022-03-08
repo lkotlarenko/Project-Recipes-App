@@ -9,11 +9,11 @@ import fetchFoodApi from '../../services/fetchFoodAPI';
 function HeaderWithSearch({ name }) {
   const allData = useContext(ContextApp);
   const {
-    searchButtom,
     changeButtomSearch,
-    searchName,
     changeSearchName,
     radioFilter,
+    searchButtom,
+    searchName,
     setRadioFilter,
     setSearchResult,
   } = allData;

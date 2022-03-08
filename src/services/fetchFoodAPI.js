@@ -15,6 +15,10 @@ async function fetchFoodApi(type) {
     API_URL = `${BASE}list.php?i=list`;
     break;
   }
+  case 'all': {
+    API_URL = `${BASE}filter.php?c=Seafood`;
+    break;
+  }
   default: {
     API_URL = `${BASE}list.php?c=list`;
     break;

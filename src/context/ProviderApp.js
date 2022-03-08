@@ -5,11 +5,12 @@ import fetchFoodApi from '../services/fetchFoodAPI';
 import fetchDrinkApi from '../services/fetchDrinkAPI';
 
 function ProviderApp({ children }) {
+  const [drinkCategories, setDrinkCategories] = useState([]);
+  const [foodAll, setFoodAll] = useState([]);
+  const [foodCategories, setFoodCategories] = useState([]);
+  const [radioFilter, setRadioFilter] = useState('name');
   const [searchButtom, setsearchButtom] = useState(false);
   const [searchName, setsearchName] = useState('');
-  const [foodCategories, setFoodCategories] = useState([]);
-  const [drinkCategories, setDrinkCategories] = useState([]);
-  const [radioFilter, setRadioFilter] = useState('name');
   const [searchResult, setSearchResult] = useState({});
 
   const changeButtomSearch = () => {
@@ -22,8 +23,10 @@ function ProviderApp({ children }) {
   };
 
   const handleFoods = async () => {
-    const { meals } = await fetchFoodApi('categories');
-    setFoodCategories(meals);
+    const allCategories = await fetchFoodApi('categories');
+    const allItems = await fetchFoodApi('all');
+    setFoodCategories(allCategories.meals);
+    setFoodAll(allItems.meals);
   };
 
   const handleDrinks = async () => {
@@ -37,15 +40,16 @@ function ProviderApp({ children }) {
   }, []);
 
   const allData = {
-    searchButtom,
-    changeButtomSearch,
-    searchName,
-    changeSearchName,
-    foodCategories,
     drinkCategories,
+    foodAll,
+    foodCategories,
     radioFilter,
-    setRadioFilter,
+    searchButtom,
+    searchName,
     searchResult,
+    changeButtomSearch,
+    changeSearchName,
+    setRadioFilter,
     setSearchResult,
   };
 

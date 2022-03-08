@@ -1,10 +1,16 @@
-.food__categories {
+.food__all {
+  margin: 10px;
+  width: 150px;
+}
+
+.food__categories, .food__board {
+  align-items: flex-end;
   display: flex;
   flex-flow: row wrap;
 }
 
 .food__category {
-  background: #ddd;
+  /* background: #ddd; */
   padding: 10px;
   margin: 5px;
 }
