@@ -5,6 +5,8 @@ import ContextApp from './ContextApp';
 function ProviderApp({ children }) {
   const [searchButtom, setsearchButtom] = useState(false);
   const [searchName, setsearchName] = useState('');
+  const [radioFilter, setRadioFilter] = useState('name');
+  const [searchResult, setSearchResult] = useState({});
 
   const changeButtomSearch = () => {
     if (searchButtom === false) return setsearchButtom(true);
@@ -20,6 +22,10 @@ function ProviderApp({ children }) {
     changeButtomSearch,
     searchName,
     changeSearchName,
+    radioFilter,
+    setRadioFilter,
+    searchResult,
+    setSearchResult,
   };
 
   return (
