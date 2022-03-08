@@ -1,11 +1,11 @@
 import React from 'react';
-import HeaderNoSearch from '../../components/Header/HeaderNoSearch';
+import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 
 function ExploreMain() {
   return (
     <div>
       <h3>ExploreMain</h3>
-      <HeaderNoSearch name="Explore" />
+      <HeaderWithSearch name="Explore" verifc={ false } />
     </div>
   );
 }

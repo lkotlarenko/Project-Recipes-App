@@ -5,7 +5,7 @@ function DrinkMain() {
   return (
     <div>
       <h3>DrinkMain</h3>
-      <HeaderWithSearch name="Drinks" />
+      <HeaderWithSearch name="Drinks" verifc="search" />
     </div>
   );
 }

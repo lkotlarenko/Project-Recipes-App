@@ -6,7 +6,7 @@ import SearchButtom from '../../images/searchIcon.svg';
 import ContextApp from '../../context/ContextApp';
 import MealApi from '../../services/MealAPI';
 
-function HeaderWithSearch({ name }) {
+function HeaderWithSearch({ name, verifc }) {
   const { allData } = useContext(ContextApp);
   const {
     searchButtom,
@@ -57,6 +57,7 @@ function HeaderWithSearch({ name }) {
         name="searchName"
         value={ searchName }
         data-testid="search-input"
+        className="border-solid border-2 border-indigo-900"
       />
       <h4>Filter by</h4>
       <label
@@ -110,23 +111,31 @@ function HeaderWithSearch({ name }) {
   );
   return (
     <div>
-      <button
-        type="button"
-        src={ ProfileButtom }
-        data-testid="profile-top-btn"
-        onClick={ onClickButtom }
-      >
-        <input type="image" src={ ProfileButtom } alt={ name } />
-      </button>
-      <h2 data-testid="page-title">{name}</h2>
-      <button
-        data-testid="search-top-btn"
-        type="button"
-        src={ SearchButtom }
-        onClick={ changeButtomSearch }
-      >
-        <input type="image" src={ SearchButtom } alt={ name } />
-      </button>
+      <div className="flex justify-between bg-slate-300">
+        <button
+          type="button"
+          src={ ProfileButtom }
+          data-testid="profile-top-btn"
+          onClick={ onClickButtom }
+        >
+          <input type="image" src={ ProfileButtom } alt={ name } />
+        </button>
+        <h2 className="text-2xl" data-testid="page-title">{name}</h2>
+        {
+          verifc
+            ? (
+              <button
+                data-testid="search-top-btn"
+                type="button"
+                src={ SearchButtom }
+                onClick={ changeButtomSearch }
+              >
+                <input type="image" src={ SearchButtom } alt={ name } />
+              </button>
+            )
+            : null
+        }
+      </div>
       <div>
         {searchButtom && SEARCH_FEATURES}
       </div>
@@ -136,6 +145,7 @@ function HeaderWithSearch({ name }) {
 
 HeaderWithSearch.propTypes = {
   name: PropTypes.string.isRequired,
+  verifc: PropTypes.string.isRequired,
 };
 
 export default HeaderWithSearch;

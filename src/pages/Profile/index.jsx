@@ -1,10 +1,10 @@
 import React from 'react';
-import HeaderNoSearch from '../../components/Header/HeaderNoSearch';
+import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 
 function Profile() {
   return (
     <div>
-      <HeaderNoSearch name="Profile" />
+      <HeaderWithSearch name="Profile" verifc={ false } />
     </div>
   );
 }
