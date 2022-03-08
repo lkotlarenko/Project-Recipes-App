@@ -1,35 +1,62 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ContextApp from './ContextApp';
+import fetchAPI from '../services/drinks&mealsAPI';
 
 function ProviderApp({ children }) {
-  const [searchButtom, setsearchButtom] = useState(false);
-  const [searchName, setsearchName] = useState('');
+  const [drinkCategories, setDrinkCategories] = useState([]);
+  const [foodCategories, setFoodCategories] = useState([]);
   const [radioFilter, setRadioFilter] = useState('name');
-  const [searchResult, setSearchResult] = useState({});
+  const [searchButton, setSearchButton] = useState(false);
+  const [searchName, setSearchName] = useState('');
+  const [meals, setMeals] = useState([]);
+  const [drinks, setDrinks] = useState([]);
 
-  const changeButtomSearch = () => {
-    if (searchButtom === false) return setsearchButtom(true);
-    setsearchButtom(false);
+  const changeButtonSearch = () => {
+    if (searchButton === false) return setSearchButton(true);
+    setSearchButton(false);
   };
 
   const changeSearchName = (e) => {
-    setsearchName(e);
+    setSearchName(e);
   };
 
+  const handleFoods = async () => {
+    const allCategories = await fetchAPI('foods', 'categories');
+    const allMeals = await fetchAPI('foods', 'all');
+    setFoodCategories(allCategories.meals);
+    setMeals(allMeals.meals);
+  };
+
+  const handleDrinks = async () => {
+    const allCategories = await fetchAPI('drinks', 'categories');
+    const allDrinks = await fetchAPI('drinks', 'all');
+    setDrinkCategories(allCategories.drinks);
+    setDrinks(allDrinks.drinks);
+  };
+
+  useEffect(() => {
+    handleFoods();
+    handleDrinks();
+  }, []);
+
   const allData = {
-    searchButtom,
-    changeButtomSearch,
-    searchName,
-    changeSearchName,
+    drinkCategories,
+    drinks,
+    foodCategories,
+    meals,
     radioFilter,
+    searchButton,
+    searchName,
+    changeButtonSearch,
+    changeSearchName,
+    setDrinks,
+    setMeals,
     setRadioFilter,
-    searchResult,
-    setSearchResult,
   };
 
   return (
-    <ContextApp.Provider value={ { allData } }>
+    <ContextApp.Provider value={ allData }>
       { children }
     </ContextApp.Provider>
   );
