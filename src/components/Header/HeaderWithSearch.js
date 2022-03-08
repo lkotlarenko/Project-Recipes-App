@@ -1,48 +1,55 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import ProfileButtom from '../../images/profileIcon.svg';
-import SearchButtom from '../../images/searchIcon.svg';
+import ProfileButton from '../../images/profileIcon.svg';
+import SearchButton from '../../images/searchIcon.svg';
 import ContextApp from '../../context/ContextApp';
-import fetchFoodApi from '../../services/fetchFoodAPI';
+import { INGREDIENT, FIRST_LETTER, NAME } from './filterTypes';
+import fetchAPI from '../../services/drinks&mealsAPI';
 
 function HeaderWithSearch({ name }) {
   const allData = useContext(ContextApp);
   const {
-    changeButtomSearch,
+    changeButtonSearch,
     changeSearchName,
     radioFilter,
-    searchButtom,
+    searchButton,
     searchName,
+    setDrinks,
+    setMeals,
     setRadioFilter,
-    setSearchResult,
   } = allData;
 
   const history = useHistory();
-  const onClickButtom = () => {
+  const onClickButton = () => {
     history.push('/profile');
   };
 
-  const handleSearch = async (url) => {
-    const response = await fetchFoodApi(url);
-    setSearchResult(response);
+  const handleSearch = async (searchFilter, searchQuery) => {
+    if (name === 'Foods') {
+      const data = await fetchAPI(name, searchFilter, searchQuery);
+      setMeals(data.meals);
+    } else if (name === 'Drinks') {
+      const data = await fetchAPI(name, searchFilter, searchQuery);
+      setDrinks(data.drinks);
+    }
   };
 
   const doSearch = () => {
     if (searchName.length > 0) {
       switch (radioFilter) {
-      case 'ingredient':
-        handleSearch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchName}`);
+      case INGREDIENT:
+        handleSearch(INGREDIENT, searchName);
         break;
-      case 'firstLetter':
+      case FIRST_LETTER:
         if (searchName.length === 1) {
-          handleSearch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${searchName}`);
+          handleSearch(FIRST_LETTER, searchName);
         } else {
           global.alert('Your search must have only 1 (one) character');
         }
         break;
       default:
-        handleSearch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchName}`);
+        handleSearch(NAME, searchName);
         break;
       }
     } else {
@@ -82,7 +89,6 @@ function HeaderWithSearch({ name }) {
           value="name"
           data-testid="name-search-radio"
           id="name-search"
-          checked
           type="radio"
         />
       </label>
@@ -112,30 +118,30 @@ function HeaderWithSearch({ name }) {
     <div>
       <button
         type="button"
-        src={ ProfileButtom }
+        src={ ProfileButton }
         data-testid="profile-top-btn"
-        onClick={ onClickButtom }
+        onClick={ onClickButton }
       >
-        <input type="image" src={ ProfileButtom } alt={ name } />
+        <input type="image" src={ ProfileButton } alt={ name } />
       </button>
       <h2 data-testid="page-title">{name}</h2>
       <button
         data-testid="search-top-btn"
         type="button"
-        src={ SearchButtom }
-        onClick={ changeButtomSearch }
+        src={ SearchButton }
+        onClick={ changeButtonSearch }
       >
-        <input type="image" src={ SearchButtom } alt={ name } />
+        <input type="image" src={ SearchButton } alt={ name } />
       </button>
       <div>
-        {searchButtom && SEARCH_FEATURES}
+        {searchButton && SEARCH_FEATURES}
       </div>
     </div>
   );
 }
 
 HeaderWithSearch.propTypes = {
-  name: PropTypes.string.isRequired,
-};
+  name: PropTypes.string,
+}.isRequired;
 
 export default HeaderWithSearch;

@@ -9,7 +9,7 @@ function DrinkMain() {
 
   return (
     <>
-      <HeaderWithSearch name="Foods" />
+      <HeaderWithSearch name="Drinks" />
       <h3>DrinkMain</h3>
       <div className="drink__categories">
         { drinkCategories.map(({ strCategory }, index) => (

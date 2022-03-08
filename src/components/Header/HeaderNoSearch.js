@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import ProfileButtom from '../../images/profileIcon.svg';
+import ProfileButton from '../../images/profileIcon.svg';
 
 function HeaderNoSearch({ name }) {
-//   console.log(name);
   const history = useHistory();
-  const onClickButtom = () => {
+  const onClickButton = () => {
     history.push('/profile');
   };
+
   return (
     <div>
       <button
         data-testid="profile-top-btn"
-        onClick={ onClickButtom }
+        onClick={ onClickButton }
         type="button"
-        src={ ProfileButtom }
+        src={ ProfileButton }
       >
-        <input type="image" src={ ProfileButtom } alt={ name } />
+        <input type="image" src={ ProfileButton } alt={ name } />
       </button>
       <h2 data-testid="page-title">{name}</h2>
     </div>
@@ -25,7 +25,7 @@ function HeaderNoSearch({ name }) {
 }
 
 HeaderNoSearch.propTypes = {
-  name: PropTypes.string.isRequired,
-};
+  name: PropTypes.string,
+}.isRequired;
 
 export default HeaderNoSearch;
