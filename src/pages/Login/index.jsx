@@ -7,16 +7,16 @@ export default function Login() {
 
   const {
     email,
-    setEmail,
-    password,
-    setPassword,
     isDisabled,
+    password,
+    setEmail,
     setIsDisabled,
+    setPassword,
   } = useContext(ContextApp);
 
   useEffect(() => {
     const re = /\S+@\S+\.\S+/;
-    const magicNumber = 5;
+    const magicNumber = 6;
     if (re.test(email) && password.length > magicNumber) {
       setIsDisabled(false);
     } else {
