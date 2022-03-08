@@ -9,6 +9,8 @@ function ProviderApp({ children }) {
   const [searchName, setsearchName] = useState('');
   const [foodCategories, setFoodCategories] = useState([]);
   const [drinkCategories, setDrinkCategories] = useState([]);
+  const [radioFilter, setRadioFilter] = useState('name');
+  const [searchResult, setSearchResult] = useState({});
 
   const changeButtomSearch = () => {
     if (searchButtom === false) return setsearchButtom(true);
@@ -41,6 +43,10 @@ function ProviderApp({ children }) {
     changeSearchName,
     foodCategories,
     drinkCategories,
+    radioFilter,
+    setRadioFilter,
+    searchResult,
+    setSearchResult,
   };
 
   return (
