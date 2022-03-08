@@ -1,0 +1,15 @@
+.food__all {
+  margin: 10px;
+  width: 150px;
+}
+
+.food__categories, .food__board {
+  align-items: flex-end;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.food__category {
+  margin: 5px;
+  padding: 10px;
+}
