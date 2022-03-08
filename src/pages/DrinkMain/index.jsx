@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 import ContextApp from '../../context/ContextApp';
-import './style.css';
 // import Footer from '../../components/Footer';
 
 function DrinkMain() {

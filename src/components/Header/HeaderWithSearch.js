@@ -8,7 +8,7 @@ import { INGREDIENT, FIRST_LETTER, NAME } from './filterTypes';
 import fetchAPI from '../../services/drinks&mealsAPI';
 
 function HeaderWithSearch({ name, verifc }) {
-  const { allData } = useContext(ContextApp);
+  const allData = useContext(ContextApp);
   const {
     changeButtonSearch,
     changeSearchName,
