@@ -1,10 +1,10 @@
 import React from 'react';
-import HeaderNoSearch from '../../components/Header/HeaderNoSearch';
+import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 
 function DoneRecipes() {
   return (
     <div>
-      <HeaderNoSearch name="Done Recipes" />
+      <HeaderWithSearch name="Done Recipes" verifc={ false } />
       <h3>DoneRecipes</h3>
     </div>
   );

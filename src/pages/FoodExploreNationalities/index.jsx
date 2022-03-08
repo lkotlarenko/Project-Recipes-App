@@ -5,7 +5,7 @@ function FoodExploreNationality() {
   return (
     <div>
       <h3>FoodExploreNationality</h3>
-      <HeaderWithSearch name="Explore Nationalities" />
+      <HeaderWithSearch name="Explore Nationalities" verifc="search" />
     </div>
   );
 }

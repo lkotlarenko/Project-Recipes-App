@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 import ContextApp from '../../context/ContextApp';
-import './style.css';
 // import Footer from '../../components/Footer';
 
 function FoodMain() {
   const { foodCategories, meals } = useContext(ContextApp);
 
   return (
-    <>
-      <HeaderWithSearch name="Foods" />
+    <main>
+      <HeaderWithSearch name="Foods" verifc="search" />
       <h3>FoodMain</h3>
       <div className="flex flex-wrap">
         <button type="button" className="m-2 p-2">All</button>
@@ -31,7 +30,7 @@ function FoodMain() {
           </div>
         )) }
       </div>
-    </>
+    </main>
   );
 }
 
