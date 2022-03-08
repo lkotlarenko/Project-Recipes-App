@@ -22,7 +22,7 @@ export default function Login() {
     } else {
       setIsDisabled(true);
     }
-  }, [email, password]);
+  }, [email, password, setIsDisabled]);
 
   return (
     <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
@@ -72,6 +72,12 @@ export default function Login() {
         disabled={ isDisabled }
         data-testid="login-submit-btn"
         onClick={ () => {
+          localStorage.setItem('mealsToken', 1);
+          localStorage.setItem('cocktailsToken', 1);
+          const user = {
+            email,
+          };
+          localStorage.setItem('user', JSON.stringify(user));
           history.push('/mainpage');
         } }
       >
