@@ -1,8 +1,11 @@
 import React from 'react';
+import HeaderNoSearch from '../../components/Header/HeaderNoSearch';
 
 function Profile() {
   return (
-    <div>Profile</div>
+    <div>
+      <HeaderNoSearch name="Profile" />
+    </div>
   );
 }
 
