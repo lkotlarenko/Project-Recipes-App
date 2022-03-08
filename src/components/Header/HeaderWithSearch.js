@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import ProfileButtom from '../../images/profileIcon.svg';
 import SearchButtom from '../../images/searchIcon.svg';
 import ContextApp from '../../context/ContextApp';
-import MealApi from '../../services/MealAPI';
+import fetchFoodApi from '../../services/fetchFoodAPI';
 
 function HeaderWithSearch({ name }) {
   const allData = useContext(ContextApp);
@@ -24,7 +24,7 @@ function HeaderWithSearch({ name }) {
   };
 
   const handleSearch = async (url) => {
-    const response = await MealApi(url);
+    const response = await fetchFoodApi(url);
     setSearchResult(response);
   };
 

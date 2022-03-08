@@ -1,7 +1,6 @@
 async function fetchFoodApi(type) {
   const BASE = 'https://www.themealdb.com/api/json/v1/1/';
   let API_URL = '';
-  console.log(type, 'type');
 
   switch (type) {
   case 'categories': {
@@ -17,12 +16,10 @@ async function fetchFoodApi(type) {
     break;
   }
   default: {
-    url = `${BASE}list.php?c=list`;
+    API_URL = `${BASE}list.php?c=list`;
     break;
   }
   }
-
-  console.log(API_URL, 'url');
 
   return fetch(API_URL)
     .then((response) => response.json())
