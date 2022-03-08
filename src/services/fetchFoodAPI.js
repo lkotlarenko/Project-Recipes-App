@@ -1,30 +1,30 @@
 async function fetchFoodApi(type) {
-  const base = 'https://www.themealdb.com/api/json/v1/1/';
-  let url = '';
+  const BASE = 'https://www.themealdb.com/api/json/v1/1/';
+  let API_URL = '';
   console.log(type, 'type');
 
   switch (type) {
   case 'categories': {
-    url = `${base}list.php?c=list`;
+    API_URL = `${BASE}list.php?c=list`;
     break;
   }
   case 'nationalities': {
-    url = `${base}list.php?a=list`;
+    API_URL = `${BASE}list.php?a=list`;
     break;
   }
   case 'ingredients': {
-    url = `${base}list.php?i=list`;
+    API_URL = `${BASE}list.php?i=list`;
     break;
   }
   default: {
-    url = `${base}list.php?c=list`;
+    url = `${BASE}list.php?c=list`;
     break;
   }
   }
 
-  console.log(url, 'url');
+  console.log(API_URL, 'url');
 
-  return fetch(url)
+  return fetch(API_URL)
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => `Error found: ${error}`);

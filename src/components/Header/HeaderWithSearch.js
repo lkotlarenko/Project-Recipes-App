@@ -7,7 +7,7 @@ import ContextApp from '../../context/ContextApp';
 
 function HeaderWithSearch({ name }) {
 //   console.log(name);
-  const { allData } = useContext(ContextApp);
+  const allData = useContext(ContextApp);
   const { searchButtom, changeButtomSearch, searchName, changeSearchName } = allData;
   const history = useHistory();
   const onClickButtom = () => {
