@@ -5,7 +5,7 @@ import './style.css';
 // import Footer from '../../components/Footer';
 
 function FoodMain() {
-  const { foodCategories, foodAll } = useContext(ContextApp);
+  const { foodCategories, meals } = useContext(ContextApp);
 
   return (
     <>
@@ -24,7 +24,7 @@ function FoodMain() {
         )) }
       </div>
       <div className="food__board">
-        { foodAll.map(({ strMeal, strMealThumb, idMeal }) => (
+        { meals.map(({ strMeal, strMealThumb, idMeal }) => (
           <div key={ idMeal } className="food__all">
             <span>{ strMeal }</span>
             <img src={ strMealThumb } alt={ strMeal } />

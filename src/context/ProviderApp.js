@@ -1,37 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ContextApp from './ContextApp';
-import fetchFoodApi from '../services/fetchFoodAPI';
-import fetchDrinkApi from '../services/fetchDrinkAPI';
+import fetchAPI from '../services/drinks&mealsAPI';
 
 function ProviderApp({ children }) {
   const [drinkCategories, setDrinkCategories] = useState([]);
-  const [foodAll, setFoodAll] = useState([]);
   const [foodCategories, setFoodCategories] = useState([]);
   const [radioFilter, setRadioFilter] = useState('name');
-  const [searchButtom, setsearchButtom] = useState(false);
-  const [searchName, setsearchName] = useState('');
-  const [searchResult, setSearchResult] = useState({});
+  const [searchButton, setSearchButton] = useState(false);
+  const [searchName, setSearchName] = useState('');
+  const [meals, setMeals] = useState([]);
+  const [drinks, setDrinks] = useState([]);
 
-  const changeButtomSearch = () => {
-    if (searchButtom === false) return setsearchButtom(true);
-    setsearchButtom(false);
+  const changeButtonSearch = () => {
+    if (searchButton === false) return setSearchButton(true);
+    setSearchButton(false);
   };
 
   const changeSearchName = (e) => {
-    setsearchName(e);
+    setSearchName(e);
   };
 
   const handleFoods = async () => {
-    const allCategories = await fetchFoodApi('categories');
-    const allItems = await fetchFoodApi('all');
+    const allCategories = await fetchAPI('foods', 'categories');
+    const allMeals = await fetchAPI('foods', 'all');
     setFoodCategories(allCategories.meals);
-    setFoodAll(allItems.meals);
+    setMeals(allMeals.meals);
   };
 
   const handleDrinks = async () => {
-    const { drinks } = await fetchDrinkApi('categories');
-    setDrinkCategories(drinks);
+    const allCategories = await fetchAPI('drinks', 'categories');
+    const allDrinks = await fetchAPI('drinks', 'all');
+    setDrinkCategories(allCategories.drinks);
+    setDrinks(allDrinks.drinks);
   };
 
   useEffect(() => {
@@ -41,16 +42,17 @@ function ProviderApp({ children }) {
 
   const allData = {
     drinkCategories,
-    foodAll,
+    drinks,
     foodCategories,
+    meals,
     radioFilter,
-    searchButtom,
+    searchButton,
     searchName,
-    searchResult,
-    changeButtomSearch,
+    changeButtonSearch,
     changeSearchName,
+    setDrinks,
+    setMeals,
     setRadioFilter,
-    setSearchResult,
   };
 
   return (
