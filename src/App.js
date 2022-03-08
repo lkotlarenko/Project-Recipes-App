@@ -31,11 +31,7 @@ function App() {
           path="/explore/drinks/ingredients"
           component={ DrinkExploreIngredients }
         />
-        <Route
-          exact
-          path="/drinks"
-          component={ DrinkMain }
-        />
+        <Route exact path="/drinks" component={ DrinkMain } />
         <Route
           exact
           path="/drinks/{id-da-receita}/in-progress"

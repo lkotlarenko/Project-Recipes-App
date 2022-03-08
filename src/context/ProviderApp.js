@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ContextApp from './ContextApp';
+import fetchFoodApi from '../services/fetchFoodAPI';
+import fetchDrinkApi from '../services/fetchDrinkAPI';
 
 function ProviderApp({ children }) {
+  const [drinkCategories, setDrinkCategories] = useState([]);
+  const [foodAll, setFoodAll] = useState([]);
+  const [foodCategories, setFoodCategories] = useState([]);
+  const [radioFilter, setRadioFilter] = useState('name');
   const [searchButtom, setsearchButtom] = useState(false);
   const [searchName, setsearchName] = useState('');
-  const [radioFilter, setRadioFilter] = useState('name');
   const [searchResult, setSearchResult] = useState({});
 
   const changeButtomSearch = () => {
@@ -17,19 +22,39 @@ function ProviderApp({ children }) {
     setsearchName(e);
   };
 
+  const handleFoods = async () => {
+    const allCategories = await fetchFoodApi('categories');
+    const allItems = await fetchFoodApi('all');
+    setFoodCategories(allCategories.meals);
+    setFoodAll(allItems.meals);
+  };
+
+  const handleDrinks = async () => {
+    const { drinks } = await fetchDrinkApi('categories');
+    setDrinkCategories(drinks);
+  };
+
+  useEffect(() => {
+    handleFoods();
+    handleDrinks();
+  }, []);
+
   const allData = {
-    searchButtom,
-    changeButtomSearch,
-    searchName,
-    changeSearchName,
+    drinkCategories,
+    foodAll,
+    foodCategories,
     radioFilter,
-    setRadioFilter,
+    searchButtom,
+    searchName,
     searchResult,
+    changeButtomSearch,
+    changeSearchName,
+    setRadioFilter,
     setSearchResult,
   };
 
   return (
-    <ContextApp.Provider value={ { allData } }>
+    <ContextApp.Provider value={ allData }>
       { children }
     </ContextApp.Provider>
   );
