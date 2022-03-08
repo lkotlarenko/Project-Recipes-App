@@ -5,7 +5,6 @@ function Profile() {
   return (
     <div>
       <HeaderNoSearch name="Profile" />
-      <h3>Profile</h3>
     </div>
   );
 }
