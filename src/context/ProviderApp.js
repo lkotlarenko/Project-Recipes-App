@@ -6,6 +6,9 @@ import fetchAPI from '../services/drinks&mealsAPI';
 function ProviderApp({ children }) {
   const [drinkCategories, setDrinkCategories] = useState([]);
   const [foodCategories, setFoodCategories] = useState([]);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isDisabled, setIsDisabled] = useState(true);
   const [radioFilter, setRadioFilter] = useState('name');
   const [searchButton, setSearchButton] = useState(false);
   const [searchName, setSearchName] = useState('');
@@ -43,7 +46,9 @@ function ProviderApp({ children }) {
   const allData = {
     drinkCategories,
     drinks,
+    email,
     foodCategories,
+    isDisabled,
     meals,
     radioFilter,
     searchButton,
@@ -51,8 +56,12 @@ function ProviderApp({ children }) {
     changeButtonSearch,
     changeSearchName,
     setDrinks,
+    setIsDisabled,
     setMeals,
+    setPassword,
     setRadioFilter,
+    setEmail,
+    password,
   };
 
   return (
