@@ -1,8 +1,12 @@
 import React from 'react';
+import HeaderNoSearch from '../../components/Header/HeaderNoSearch';
 
 function DrinkExplore() {
   return (
-    <div>DrinkExplore</div>
+    <div>
+      <h3>DrinkExplore</h3>
+      <HeaderNoSearch name="Explore Drinks" />
+    </div>
   );
 }
 

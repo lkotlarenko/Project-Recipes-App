@@ -1,23 +1,22 @@
-import React, { useContext } from 'react';
-import ContextApp from '../../context/ContextApp';
+import React from 'react';
+import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
+// import ContextApp from '../../context/ContextApp';
 import './style.css';
-// import Header from '../../components/Header';
 // import Footer from '../../components/Footer';
 
 function FoodMain() {
-  const { categories: { meals } } = useContext(ContextApp);
-  console.log(meals, 'meals');
+  // const { categories: { meals } } = useContext(ContextApp);
+  // console.log(meals, 'meals');
 
   return (
     <>
-      {/* <Header /> */}
-      <h1>Food Main</h1>
+      <HeaderWithSearch name="Foods" />
+      <h3>FoodMain</h3>
       <div className="food__categories">
-        { meals.map(({ strCategory }, index) => (
+        {/* { meals.map(({ strCategory }, index) => (
           <span key={ index } className="food__category">{ strCategory }</span>
-        )) }
+        )) } */}
       </div>
-      {/* <Footer /> */}
     </>
   );
 }

@@ -5,7 +5,6 @@ function Login() {
     <div className="meals">
       <h1 className="text-3xl font-bold underline">
         Hello world!
-        Teste
       </h1>
     </div>
   );

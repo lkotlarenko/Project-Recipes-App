@@ -58,7 +58,7 @@ function App() {
           component={ FoodProgress }
         />
         <Route exact path="/profile" component={ Profile } />
-        <Route path="*" component={ NotFound } />
+        <Route exact path="*" component={ NotFound } />
       </Switch>
     </BrowserRouter>
   );
