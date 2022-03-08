@@ -1,0 +1,10 @@
+.food__categories {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.food__category {
+  background: #ddd;
+  padding: 10px;
+  margin: 5px;
+}

@@ -23,24 +23,41 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={ Login } />
-        <Route path="/done-recipes" component={ DoneRecipes } />
-        <Route path="/drinks/{id-da-receita}" component={ DrinkDetails } />
-        <Route path="/explore/drinks" component={ DrinkExplore } />
-        <Route path="/explore/drinks/ingredients" component={ DrinkExploreIngredients } />
-        <Route path="/drinks" component={ DrinkMain } />
-        <Route path="/drinks/{id-da-receita}/in-progress" component={ DrinkProgress } />
-        <Route path="/explore" component={ ExploreMain } />
-        <Route path="/favorite-recipes" component={ FavoriteRecipes } />
-        <Route path="/foods/{id-da-receita}" component={ FoodDetails } />
-        <Route path="/explore/foods" component={ FoodExplore } />
-        <Route path="/explore/foods/ingredients" component={ FoodExploreIngredients } />
+        <Route exact path="/done-recipes" component={ DoneRecipes } />
+        <Route exact path="/drinks/{id-da-receita}" component={ DrinkDetails } />
+        <Route exact path="/explore/drinks" component={ DrinkExplore } />
         <Route
+          exact
+          path="/explore/drinks/ingredients"
+          component={ DrinkExploreIngredients }
+        />
+        <Route exact path="/drinks" component={ DrinkMain } />
+        <Route
+          exact
+          path="/drinks/{id-da-receita}/in-progress"
+          component={ DrinkProgress }
+        />
+        <Route exact path="/explore" component={ ExploreMain } />
+        <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
+        <Route exact path="/foods/{id-da-receita}" component={ FoodDetails } />
+        <Route exact path="/explore/foods" component={ FoodExplore } />
+        <Route
+          exact
+          path="/explore/foods/ingredients"
+          component={ FoodExploreIngredients }
+        />
+        <Route
+          exact
           path="/explore/foods/nationalities"
           component={ FoodExploreNationalities }
         />
-        <Route path="/foods" component={ FoodMain } />
-        <Route path="/foods/{id-da-receita}/in-progress" component={ FoodProgress } />
-        <Route path="/profile" component={ Profile } />
+        <Route exact path="/foods" component={ FoodMain } />
+        <Route
+          exact
+          path="/foods/{id-da-receita}/in-progress"
+          component={ FoodProgress }
+        />
+        <Route exact path="/profile" component={ Profile } />
         <Route path="*" component={ NotFound } />
       </Switch>
     </BrowserRouter>
