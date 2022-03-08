@@ -1,10 +1,12 @@
-const url = 'https://swapi-trybe.herokuapp.com/api/planets/';
-
-async function MealApi() {
-  return fetch(url)
-    .then((response) => response.json())
-    .then((data) => data)
-    .catch((error) => `Error found: ${error}`);
-}
+const MealApi = async (endpoint) => {
+  console.log('aaaaaa');
+  try {
+    const response = await fetch(endpoint);
+    const data = response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
 export default MealApi;
