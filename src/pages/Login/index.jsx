@@ -78,7 +78,7 @@ export default function Login() {
             email,
           };
           localStorage.setItem('user', JSON.stringify(user));
-          history.push('/mainpage');
+          history.push('/foods');
         } }
       >
         Entrar
