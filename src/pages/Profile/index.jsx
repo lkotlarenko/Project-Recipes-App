@@ -4,6 +4,7 @@ import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 
 function Profile({ history }) {
   const userEmail = JSON.parse(localStorage.getItem('user'));
+  if (userEmail === null) return <HeaderWithSearch name="Profile" verific={ false } />;
   return (
     <div>
       <HeaderWithSearch name="Profile" verific={ false } />
