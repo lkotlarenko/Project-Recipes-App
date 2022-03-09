@@ -6,6 +6,7 @@ import SearchButton from '../../images/searchIcon.svg';
 import ContextApp from '../../context/ContextApp';
 import { INGREDIENT, FIRST_LETTER, NAME } from './filterTypes';
 import fetchAPI from '../../services/drinks&mealsAPI';
+import '../../index.css';
 
 function HeaderWithSearch({ name, verifc }) {
   const {
@@ -35,6 +36,11 @@ function HeaderWithSearch({ name, verifc }) {
       setFoods(data.meals);
     } else if (name === 'Drinks') {
       const data = await fetchAPI(name, searchFilter, searchQuery);
+      if (!data.drinks) {
+        global.alert('Sorry, we haven\'t found any recipes for these filters.');
+      } else if (data.drinks.length === 1) {
+        history.push(`/drinks/${data.drinks[0].idDrink}`);
+      }
       setDrinks(data.drinks);
     }
   };
@@ -62,18 +68,19 @@ function HeaderWithSearch({ name, verifc }) {
   };
 
   const SEARCH_FEATURES = (
-    <section>
+    <section
+      className="section-style lg:pb-45 sm:pb-4 md:max-h-10 sm:text-md
+      lg:text-sm md:pb-32"
+    >
       <input
         onChange={ (e) => changeSearchName(e.target.value) }
         name="searchName"
         value={ searchName }
         data-testid="search-input"
-        className="border-solid border-2 border-indigo-900"
+        className="input-style"
       />
-      <h4>Filter by</h4>
-      <label
-        htmlFor="ingredient"
-      >
+      <h4 className="text-white p-2 font-semibold">Filter by</h4>
+      <label htmlFor="ingredient" className="label-style">
         ingredient
         <input
           onClick={ (e) => setRadioFilter(e.target.value) }
@@ -82,11 +89,10 @@ function HeaderWithSearch({ name, verifc }) {
           data-testid="ingredient-search-radio"
           id="ingredient"
           type="radio"
+          className="radio-style"
         />
       </label>
-      <label
-        htmlFor="name-search"
-      >
+      <label htmlFor="name-search" className="label-style">
         name
         <input
           onClick={ (e) => setRadioFilter(e.target.value) }
@@ -95,11 +101,10 @@ function HeaderWithSearch({ name, verifc }) {
           data-testid="name-search-radio"
           id="name-search"
           type="radio"
+          className="radio-style"
         />
       </label>
-      <label
-        htmlFor="first-letter"
-      >
+      <label htmlFor="first-letter" className="label-style">
         first letter
         <input
           onClick={ (e) => setRadioFilter(e.target.value) }
@@ -108,12 +113,14 @@ function HeaderWithSearch({ name, verifc }) {
           data-testid="first-letter-search-radio"
           id="first-letter"
           type="radio"
+          className="radio-style"
         />
       </label>
       <button
         type="button"
         onClick={ doSearch }
         data-testid="exec-search-btn"
+        className="button-style"
       >
         Search
       </button>
@@ -130,24 +137,21 @@ function HeaderWithSearch({ name, verifc }) {
         >
           <input type="image" src={ ProfileButton } alt={ name } />
         </button>
-        <h2 className="text-2xl" data-testid="page-title">{name}</h2>
-        {
-          verifc
-            && (
-              <button
-                data-testid="search-top-btn"
-                type="button"
-                src={ SearchButton }
-                onClick={ changeButtonSearch }
-              >
-                <input type="image" src={ SearchButton } alt={ name } />
-              </button>
-            )
-        }
+        <h2 className="text-2xl" data-testid="page-title">
+          {name}
+        </h2>
+        {verifc && (
+          <button
+            data-testid="search-top-btn"
+            type="button"
+            src={ SearchButton }
+            onClick={ changeButtonSearch }
+          >
+            <input type="image" src={ SearchButton } alt={ name } />
+          </button>
+        )}
       </div>
-      <div>
-        {searchButton && SEARCH_FEATURES}
-      </div>
+      <div>{searchButton && SEARCH_FEATURES}</div>
     </div>
   );
 }
