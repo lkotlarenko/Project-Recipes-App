@@ -6,6 +6,8 @@ import './style.css';
 
 function FoodMain() {
   const { foodCategories, meals } = useContext(ContextApp);
+  const FIVE = 5;
+  const TWELVE = 12;
 
   return (
     <main>
@@ -21,7 +23,7 @@ function FoodMain() {
         >
           All
         </button>
-        { foodCategories.map(({ strCategory }, index) => (
+        { foodCategories.slice(0, FIVE).map(({ strCategory }, index) => (
           <button
             type="button"
             key={ index }
@@ -36,10 +38,18 @@ function FoodMain() {
         )) }
       </div>
       <div className="food__board">
-        { meals && meals.map(({ strMeal, strMealThumb, idMeal }) => (
-          <div key={ idMeal } className="food__all">
-            <span>{ strMeal }</span>
-            <img src={ strMealThumb } alt={ strMeal } />
+        { meals && meals.slice(0, TWELVE).map(({ strMeal, strMealThumb }, index) => (
+          <div
+            key={ index }
+            data-testid={ `${index}-recipe-card` }
+            className="food__all"
+          >
+            <span data-testid={ `${index}-card-name` }>{ strMeal }</span>
+            <img
+              src={ strMealThumb }
+              alt={ strMeal }
+              data-testid={ `${index}-card-img` }
+            />
           </div>
         )) }
       </div>
