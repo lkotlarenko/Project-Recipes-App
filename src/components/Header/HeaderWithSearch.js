@@ -15,7 +15,7 @@ function HeaderWithSearch({ name, verifc }) {
     searchButton,
     searchName,
     setDrinks,
-    setMeals,
+    setFoods,
     setRadioFilter,
   } = useContext(ContextApp);
 
@@ -32,7 +32,7 @@ function HeaderWithSearch({ name, verifc }) {
       } else if (data.meals.length === 1) {
         history.push(`/foods/${data.meals[0].idMeal}`);
       }
-      setMeals(data.meals);
+      setFoods(data.meals);
     } else if (name === 'Drinks') {
       const data = await fetchAPI(name, searchFilter, searchQuery);
       if (!data.drinks) {

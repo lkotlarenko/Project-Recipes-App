@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 import ContextApp from '../../context/ContextApp';
-// import Footer from '../../components/Footer';
+import Footer from '../../components/Footer';
 import './style.css';
 
 function FoodMain() {
-  const { foodCategories, meals } = useContext(ContextApp);
+  const { foodCategories, foods, setFilterFoodCategory } = useContext(ContextApp);
   const FIVE = 5;
   const TWELVE = 12;
 
@@ -20,6 +20,7 @@ function FoodMain() {
           hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none
           focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150
           ease-in-out m-1"
+          onClick={ () => setFilterFoodCategory('all') }
         >
           All
         </button>
@@ -32,13 +33,15 @@ function FoodMain() {
             hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none
             focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150
             ease-in-out m-1"
+            onClick={ () => setFilterFoodCategory(strCategory) }
+            data-testid={ `${strCategory}-category-filter` }
           >
             { strCategory }
           </button>
         )) }
       </div>
       <div className="food__board">
-        { meals && meals.slice(0, TWELVE).map(({ strMeal, strMealThumb }, index) => (
+        { foods && foods.slice(0, TWELVE).map(({ strMeal, strMealThumb }, index) => (
           <div
             key={ index }
             data-testid={ `${index}-recipe-card` }
@@ -53,6 +56,7 @@ function FoodMain() {
           </div>
         )) }
       </div>
+      <Footer />
     </main>
   );
 }
