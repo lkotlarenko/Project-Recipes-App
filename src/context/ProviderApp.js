@@ -24,22 +24,22 @@ function ProviderApp({ children }) {
     setSearchName(e);
   };
 
-  const handleFoods = async () => {
+  const handleFoods = async (type) => {
     const allCategories = await fetchAPI('foods', 'categories');
-    const allMeals = await fetchAPI('foods', 'all');
+    const allMeals = await fetchAPI('foods', type);
     setFoodCategories(allCategories.meals);
     setMeals(allMeals.meals);
   };
 
-  const handleDrinks = async () => {
+  const handleDrinks = async (type) => {
     const allCategories = await fetchAPI('drinks', 'categories');
-    const allDrinks = await fetchAPI('drinks', 'all');
+    const allDrinks = await fetchAPI('drinks', type);
     setDrinkCategories(allCategories.drinks);
     setDrinks(allDrinks.drinks);
   };
 
   useEffect(() => {
-    handleFoods();
+    handleFoods('all');
     handleDrinks();
   }, []);
 
