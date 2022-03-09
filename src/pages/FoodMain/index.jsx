@@ -10,21 +10,33 @@ function FoodMain() {
   return (
     <main>
       <HeaderWithSearch name="Foods" verifc="search" />
-      <h3>FoodMain</h3>
-      <div className="flex flex-wrap">
-        <button type="button" className="m-2 p-2">All</button>
+      <div className="flex flex-wrap py-2">
+        <button
+          type="button"
+          className="inline-block px-4 py-2 bg-blue-400 text-white md:font-medium
+          text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-500
+          hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none
+          focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150
+          ease-in-out m-1"
+        >
+          All
+        </button>
         { foodCategories.map(({ strCategory }, index) => (
           <button
             type="button"
             key={ index }
-            className="m-2 p-2 hover:bg-red-200"
+            className="inline-block px-4 py-2 bg-blue-400 text-white md:font-medium
+            text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-500
+            hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none
+            focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150
+            ease-in-out m-1"
           >
             { strCategory }
           </button>
         )) }
       </div>
       <div className="food__board">
-        { meals.map(({ strMeal, strMealThumb, idMeal }) => (
+        { meals && meals.map(({ strMeal, strMealThumb, idMeal }) => (
           <div key={ idMeal } className="food__all">
             <span>{ strMeal }</span>
             <img src={ strMealThumb } alt={ strMeal } />

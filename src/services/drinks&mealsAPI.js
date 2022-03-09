@@ -43,7 +43,6 @@ const fetchAPI = async (chosenAPI = 'Foods', type, searchQuery = '') => {
     break;
   }
   }
-  console.log(apiType);
   return fetch(API_URL)
     .then((response) => response.json())
     .then((data) => data)
