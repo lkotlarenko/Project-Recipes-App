@@ -4,7 +4,10 @@ import ContextApp from './ContextApp';
 import fetchAPI from '../services/drinks&mealsAPI';
 
 function ProviderApp({ children }) {
+  // const [clickCategory, setClickCategory] = useState(false);
   const [drinkCategories, setDrinkCategories] = useState([]);
+  const [filterDrinkCategory, setFilterDrinkCategory] = useState('');
+  const [filterFoodCategory, setFilterFoodCategory] = useState('');
   const [foodCategories, setFoodCategories] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,7 +15,7 @@ function ProviderApp({ children }) {
   const [radioFilter, setRadioFilter] = useState('name');
   const [searchButton, setSearchButton] = useState(false);
   const [searchName, setSearchName] = useState('');
-  const [meals, setMeals] = useState([]);
+  const [foods, setFoods] = useState([]);
   const [drinks, setDrinks] = useState([]);
 
   const changeButtonSearch = () => {
@@ -24,40 +27,55 @@ function ProviderApp({ children }) {
     setSearchName(e);
   };
 
-  const handleFoods = async () => {
+  const handleFoods = async (type, searchQuery) => {
     const allCategories = await fetchAPI('foods', 'categories');
-    const allMeals = await fetchAPI('foods', 'all');
+    const allFoods = await fetchAPI('foods', type, searchQuery);
     setFoodCategories(allCategories.meals);
-    setMeals(allMeals.meals);
+    setFoods(allFoods.meals);
   };
 
-  const handleDrinks = async () => {
+  const handleDrinks = async (type, searchQuery) => {
     const allCategories = await fetchAPI('drinks', 'categories');
-    const allDrinks = await fetchAPI('drinks', 'all');
+    const allDrinks = await fetchAPI('drinks', type, searchQuery);
     setDrinkCategories(allCategories.drinks);
     setDrinks(allDrinks.drinks);
   };
 
   useEffect(() => {
-    handleFoods();
-    handleDrinks();
+    handleFoods('all');
+    handleDrinks('all');
   }, []);
 
+  useEffect(() => {
+    if (filterFoodCategory) handleFoods('filterCategory', filterFoodCategory);
+    else handleFoods('all');
+  }, [filterFoodCategory]);
+
+  useEffect(() => {
+    // console.log(clickCategory, 'clickCategory');
+    if (filterDrinkCategory) handleDrinks('filterCategory', filterDrinkCategory);
+    else handleDrinks('all');
+  }, [filterDrinkCategory]);
+
   const allData = {
+    // clickCategory,
     drinkCategories,
     drinks,
     email,
     foodCategories,
     isDisabled,
-    meals,
+    foods,
     radioFilter,
     searchButton,
     searchName,
     changeButtonSearch,
     changeSearchName,
+    // setClickCategory,
     setDrinks,
     setIsDisabled,
-    setMeals,
+    setFilterDrinkCategory,
+    setFilterFoodCategory,
+    setFoods,
     setPassword,
     setRadioFilter,
     setEmail,

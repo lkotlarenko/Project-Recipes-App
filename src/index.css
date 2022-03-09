@@ -2,6 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ! custom tailwind classes */
+@layer components {
+  .radio-style {
+    @apply appearance-none rounded-full h-4
+    w-4 border border-gray-300 bg-white checked:bg-blue-600
+    checked:border-blue-600 focus:outline-none transition duration-200 mt-1
+    align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer pb-1;
+  }
+  .section-style {
+    @apply p-4 text-xs text-gray-500  bg-slate-300;
+  }
+  .input-style {
+    @apply block w-full px-3 py-1.5 text-base font-normal
+    text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300
+    rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white
+    focus:border-blue-600 focus:outline-none;
+  }
+  .label-style {
+    @apply inline-block text-gray-800 cursor-pointer pr-2;
+  }
+  .button-style {
+    @apply inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs
+    leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg
+    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+    active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out;
+  }
+  .tag-style {
+    @apply inline-block px-4 py-2 bg-blue-400 text-white md:font-medium
+    text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-500
+    hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none
+    focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150
+    ease-in-out m-1;
+  }
+}
+
+/* ! classes non tailwind */
+.food__all {
+  margin: 10px;
+  width: 150px;
+}
+
+.food__categories,
+.food__board {
+  align-items: flex-end;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.food__category {
+  margin: 5px;
+  padding: 10px;
+}
+
+.drink__all {
+  margin: 10px;
+  width: 150px;
+}
+
+.drink__categories,
+.drink__board {
+  align-items: flex-end;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.drink__category {
+  margin: 5px;
+  padding: 10px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
