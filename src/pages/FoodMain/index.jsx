@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 import ContextApp from '../../context/ContextApp';
-import Footer from '../../components/Footer';
 import './style.css';
 
 function FoodMain() {
@@ -56,7 +55,6 @@ function FoodMain() {
           </div>
         )) }
       </div>
-      <Footer />
     </main>
   );
 }
