@@ -1125,7 +1125,7 @@ Ou seja, se outro filtro de categoria for selecionado, ele deve substituir o ant
 
 ### 31 - Desenvolva o filtro de categorias com a opção de filtrar por todas as categorias
 
-Ou seja, retornando novamente todas as receitas. O nome do filtro deve ser "All".
+Ou seja, retornando novamente todas as receitas. O nome do filtro deve ser "All", ele deve possuir `data-testid=All-category-filter`.
 
   O que será verificado:
   ```
