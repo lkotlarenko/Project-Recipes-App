@@ -6,17 +6,29 @@ import mealIcon from '../../images/mealIcon.svg';
 
 function Footer() {
   return (
-    <div className="footer" data-testid="footer">
-      <Link to="/bebidas">
-        <img src={ drinkIcon } alt="drinkIcon" data-testid="drinks-bottom-btn" />
+    <footer className=" flex justify-between fixed bottom-0 " data-testid="footer">
+      <Link to="/drinks">
+        <img
+          src={ drinkIcon }
+          alt="drinkIcon"
+          data-testid="drinks-bottom-btn"
+        />
       </Link>
-      <Link to="/explorar">
-        <img src={ exploreIcon } alt="exploreIcon" data-testid="explore-bottom-btn" />
+      <Link to="/explore">
+        <img
+          src={ exploreIcon }
+          alt="exploreIcon"
+          data-testid="explore-bottom-btn"
+        />
       </Link>
-      <Link to="/comidas">
-        <img src={ mealIcon } alt="mealIcon" data-testid="food-bottom-btn" />
+      <Link to="/foods">
+        <img
+          src={ mealIcon }
+          alt="mealIcon"
+          data-testid="food-bottom-btn"
+        />
       </Link>
-    </div>
+    </footer>
   );
 }
 

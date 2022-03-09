@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Footer from '../../components/Footer';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 import ContextApp from '../../context/ContextApp';
 // import Footer from '../../components/Footer';
@@ -53,6 +54,7 @@ function DrinkMain() {
           </div>
         )) }
       </div>
+      <Footer />
     </div>
   );
 }
