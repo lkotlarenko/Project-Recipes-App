@@ -6,10 +6,13 @@ import fetchAPI from '../services/drinks&mealsAPI';
 function ProviderApp({ children }) {
   const [clickDrinkCategory, setClickDrinkCategory] = useState(false);
   const [clickFoodCategory, setClickFoodCategory] = useState(false);
+  const [currentPage, setCurrentPage] = useState('foods');
   const [drinkCategories, setDrinkCategories] = useState([]);
+  const [drinkDetails, setDrinkDetails] = useState([]);
   const [filterDrinkCategory, setFilterDrinkCategory] = useState('');
   const [filterFoodCategory, setFilterFoodCategory] = useState('');
   const [foodCategories, setFoodCategories] = useState([]);
+  const [foodDetails, setFoodDetails] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
@@ -40,6 +43,12 @@ function ProviderApp({ children }) {
     const allDrinks = await fetchAPI('drinks', type, searchQuery);
     setDrinkCategories(allCategories.drinks);
     setDrinks(allDrinks.drinks);
+  };
+
+  const handleDetails = async (chosenAPI, type, searchQuery) => {
+    const allDetails = await fetchAPI(chosenAPI, type, searchQuery);
+    if (chosenAPI === 'foods') setFoodDetails(allDetails.meals);
+    if (chosenAPI === 'drinks') setDrinkDetails(allDetails.drinks);
   };
 
   // https://stackoverflow.com/questions/53446020/how-to-compare-oldvalues-and-newvalues-on-react-hooks-useeffect
@@ -87,10 +96,13 @@ function ProviderApp({ children }) {
   const allData = {
     clickDrinkCategory,
     clickFoodCategory,
+    currentPage,
     drinkCategories,
+    drinkDetails,
     drinks,
     email,
     foodCategories,
+    foodDetails,
     isDisabled,
     foods,
     radioFilter,
@@ -98,8 +110,10 @@ function ProviderApp({ children }) {
     searchName,
     changeButtonSearch,
     changeSearchName,
+    handleDetails,
     setClickDrinkCategory,
     setClickFoodCategory,
+    setCurrentPage,
     setDrinks,
     setIsDisabled,
     setFilterDrinkCategory,
