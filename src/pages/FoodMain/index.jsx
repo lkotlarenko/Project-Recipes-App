@@ -1,13 +1,17 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 import ContextApp from '../../context/ContextApp';
 import '../../index.css';
 
 function FoodMain() {
-  const { foodCategories, foods, setFilterFoodCategory } = useContext(ContextApp);
+  const { clickFoodCategory, foodCategories, foods,
+    setClickFoodCategory, setFilterFoodCategory } = useContext(ContextApp);
   const FIVE = 5;
   const TWELVE = 12;
+  const history = useHistory();
 
   return (
     <main>
@@ -16,7 +20,11 @@ function FoodMain() {
         <button
           type="button"
           className="tag-style"
-          onClick={ () => setFilterFoodCategory('all') }
+          onClick={ () => {
+            setFilterFoodCategory('all');
+            setClickFoodCategory(!clickFoodCategory);
+          } }
+          data-testid="All-category-filter"
         >
           All
         </button>
@@ -25,7 +33,10 @@ function FoodMain() {
             type="button"
             key={ index }
             className="tag-style"
-            onClick={ () => setFilterFoodCategory(strCategory) }
+            onClick={ () => {
+              setFilterFoodCategory(strCategory);
+              setClickFoodCategory(!clickFoodCategory);
+            } }
             data-testid={ `${strCategory}-category-filter` }
           >
             { strCategory }
@@ -33,24 +44,34 @@ function FoodMain() {
         )) }
       </div>
       <div className="food__board">
-        { foods && foods.slice(0, TWELVE).map(({ strMeal, strMealThumb }, index) => (
-          <div
-            key={ index }
-            data-testid={ `${index}-recipe-card` }
-            className="food__all"
-          >
-            <span data-testid={ `${index}-card-name` }>{ strMeal }</span>
-            <img
-              src={ strMealThumb }
-              alt={ strMeal }
-              data-testid={ `${index}-card-img` }
-            />
-          </div>
-        )) }
+        { foods && foods.slice(0, TWELVE)
+          .map(({ strMeal, strMealThumb, idMeal }, index) => (
+            <button
+              key={ index }
+              type="button"
+              onClick={ () => history.push(`/foods/${idMeal}`) }
+            >
+              <div
+                data-testid={ `${index}-recipe-card` }
+                className="food__all"
+              >
+                <span data-testid={ `${index}-card-name` }>{ strMeal }</span>
+                <img
+                  src={ strMealThumb }
+                  alt={ strMeal }
+                  data-testid={ `${index}-card-img` }
+                />
+              </div>
+            </button>
+          )) }
       </div>
       <Footer />
     </main>
   );
 }
+
+FoodMain.propTypes = {
+  history: PropTypes.instanceOf(Object),
+}.isRequired;
 
 export default FoodMain;
