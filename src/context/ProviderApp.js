@@ -4,24 +4,27 @@ import ContextApp from './ContextApp';
 import fetchAPI from '../services/drinks&mealsAPI';
 
 function ProviderApp({ children }) {
+  const segment = window.location.pathname.split('/').pop();
+
   const [clickDrinkCategory, setClickDrinkCategory] = useState(false);
   const [clickFoodCategory, setClickFoodCategory] = useState(false);
   const [currentPage, setCurrentPage] = useState('foods');
   const [drinkCategories, setDrinkCategories] = useState([]);
   const [drinkDetails, setDrinkDetails] = useState([]);
+  const [drinks, setDrinks] = useState([]);
+  const [email, setEmail] = useState('');
   const [filterDrinkCategory, setFilterDrinkCategory] = useState('');
   const [filterFoodCategory, setFilterFoodCategory] = useState('');
   const [foodCategories, setFoodCategories] = useState([]);
   const [foodDetails, setFoodDetails] = useState([]);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [foods, setFoods] = useState([]);
   const [isDisabled, setIsDisabled] = useState(true);
+  const [password, setPassword] = useState('');
+  const [progress, setProgress] = useState((segment === 'in-progress'));
   const [radioFilter, setRadioFilter] = useState('name');
+  const [recipeDetails, setRecipeDetails] = useState({});
   const [searchButton, setSearchButton] = useState(false);
   const [searchName, setSearchName] = useState('');
-  const [foods, setFoods] = useState([]);
-  const [drinks, setDrinks] = useState([]);
-  const [recipeDetails, setRecipeDetails] = useState({});
 
   const changeButtonSearch = () => {
     if (searchButton === false) return setSearchButton(true);
@@ -104,10 +107,12 @@ function ProviderApp({ children }) {
     email,
     foodCategories,
     foodDetails,
-    isDisabled,
     foods,
-    recipeDetails,
+    isDisabled,
+    password,
+    progress,
     radioFilter,
+    recipeDetails,
     searchButton,
     searchName,
     changeButtonSearch,
@@ -117,15 +122,15 @@ function ProviderApp({ children }) {
     setClickFoodCategory,
     setCurrentPage,
     setDrinks,
-    setIsDisabled,
+    setEmail,
     setFilterDrinkCategory,
     setFilterFoodCategory,
     setFoods,
-    setRecipeDetails,
+    setIsDisabled,
     setPassword,
+    setProgress,
     setRadioFilter,
-    setEmail,
-    password,
+    setRecipeDetails,
   };
 
   return (
