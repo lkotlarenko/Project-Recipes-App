@@ -67,7 +67,7 @@ function ProviderApp({ children }) {
     } else {
       handleFoods('all');
     }
-  }, [clickFoodCategory]);
+  }, [clickFoodCategory, filterFoodCategory, prevFoodCategory]);
 
   useEffect(() => {
     if (filterDrinkCategory === 'all') {
@@ -82,7 +82,7 @@ function ProviderApp({ children }) {
     } else {
       handleDrinks('all');
     }
-  }, [clickDrinkCategory]);
+  }, [clickDrinkCategory, filterDrinkCategory, prevDrinkCategory]);
 
   const allData = {
     clickDrinkCategory,
