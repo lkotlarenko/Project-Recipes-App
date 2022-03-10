@@ -18,6 +18,7 @@ function ProviderApp({ children }) {
   const [searchName, setSearchName] = useState('');
   const [foods, setFoods] = useState([]);
   const [drinks, setDrinks] = useState([]);
+  const [recipeDetails, setRecipeDetails] = useState({});
 
   const changeButtonSearch = () => {
     if (searchButton === false) return setSearchButton(true);
@@ -67,7 +68,7 @@ function ProviderApp({ children }) {
     } else {
       handleFoods('all');
     }
-  }, [clickFoodCategory]);
+  }, [clickFoodCategory, filterFoodCategory, prevFoodCategory]);
 
   useEffect(() => {
     if (filterDrinkCategory === 'all') {
@@ -82,7 +83,7 @@ function ProviderApp({ children }) {
     } else {
       handleDrinks('all');
     }
-  }, [clickDrinkCategory]);
+  }, [clickDrinkCategory, filterDrinkCategory, prevDrinkCategory]);
 
   const allData = {
     clickDrinkCategory,
@@ -93,6 +94,7 @@ function ProviderApp({ children }) {
     foodCategories,
     isDisabled,
     foods,
+    recipeDetails,
     radioFilter,
     searchButton,
     searchName,
@@ -105,6 +107,7 @@ function ProviderApp({ children }) {
     setFilterDrinkCategory,
     setFilterFoodCategory,
     setFoods,
+    setRecipeDetails,
     setPassword,
     setRadioFilter,
     setEmail,
