@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import ContextApp from './ContextApp';
 import fetchAPI from '../services/drinks&mealsAPI';
 
 function ProviderApp({ children }) {
-  // const [clickCategory, setClickCategory] = useState(false);
+  const [clickDrinkCategory, setClickDrinkCategory] = useState(false);
+  const [clickFoodCategory, setClickFoodCategory] = useState(false);
   const [drinkCategories, setDrinkCategories] = useState([]);
   const [filterDrinkCategory, setFilterDrinkCategory] = useState('');
   const [filterFoodCategory, setFilterFoodCategory] = useState('');
@@ -41,24 +42,55 @@ function ProviderApp({ children }) {
     setDrinks(allDrinks.drinks);
   };
 
-  useEffect(() => {
-    handleFoods('all');
-    handleDrinks('all');
-  }, []);
+  // https://stackoverflow.com/questions/53446020/how-to-compare-oldvalues-and-newvalues-on-react-hooks-useeffect
+  function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }
+
+  const prevFoodCategory = usePrevious(filterFoodCategory);
+  const prevDrinkCategory = usePrevious(filterDrinkCategory);
 
   useEffect(() => {
-    if (filterFoodCategory) handleFoods('filterCategory', filterFoodCategory);
-    else handleFoods('all');
-  }, [filterFoodCategory]);
+    console.log('prev -->', prevFoodCategory, 'current -->', filterFoodCategory);
+    console.log('clickFoodCartegory', clickFoodCategory);
+    if (filterFoodCategory === 'all') {
+      handleFoods('all');
+    } else if (filterFoodCategory
+      && (((clickFoodCategory) && (prevFoodCategory !== filterFoodCategory))
+      || ((clickFoodCategory) && (prevFoodCategory === filterFoodCategory))
+      || ((!clickFoodCategory) && (prevFoodCategory !== filterFoodCategory)))) {
+      handleFoods('filterCategory', filterFoodCategory);
+    } else if (clickFoodCategory && (prevFoodCategory === filterFoodCategory)) {
+      handleFoods('all');
+    } else {
+      handleFoods('all');
+    }
+  }, [clickFoodCategory]);
 
   useEffect(() => {
-    // console.log(clickCategory, 'clickCategory');
-    if (filterDrinkCategory) handleDrinks('filterCategory', filterDrinkCategory);
-    else handleDrinks('all');
-  }, [filterDrinkCategory]);
+    console.log('prev -->', prevDrinkCategory, 'current -->', filterDrinkCategory);
+    console.log('clickFoodCartegory', clickDrinkCategory);
+    if (filterDrinkCategory === 'all') {
+      handleDrinks('all');
+    } else if (filterDrinkCategory
+      && (((clickDrinkCategory) && (prevDrinkCategory !== filterDrinkCategory))
+      || ((clickDrinkCategory) && (prevDrinkCategory === filterDrinkCategory))
+      || ((!clickDrinkCategory) && (prevDrinkCategory !== filterDrinkCategory)))) {
+      handleDrinks('filterCategory', filterDrinkCategory);
+    } else if (clickDrinkCategory && (prevDrinkCategory === filterDrinkCategory)) {
+      handleDrinks('all');
+    } else {
+      handleDrinks('all');
+    }
+  }, [clickDrinkCategory]);
 
   const allData = {
-    // clickCategory,
+    clickDrinkCategory,
+    clickFoodCategory,
     drinkCategories,
     drinks,
     email,
@@ -70,7 +102,8 @@ function ProviderApp({ children }) {
     searchName,
     changeButtonSearch,
     changeSearchName,
-    // setClickCategory,
+    setClickDrinkCategory,
+    setClickFoodCategory,
     setDrinks,
     setIsDisabled,
     setFilterDrinkCategory,
