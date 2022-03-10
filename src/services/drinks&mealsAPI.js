@@ -4,13 +4,10 @@ const fetchAPI = async (chosenAPI = 'Foods', type, searchQuery = '') => {
   const apiType = chosenAPI.toUpperCase();
   switch (apiType) {
   case 'DRINKS':
-    BASE = 'https://www.thecocktaildb.com/api/json/v1/1/';
-    break;
+    BASE = 'https://www.thecocktaildb.com/api/json/v1/1/'; break;
   case 'FOODS':
-    BASE = 'https://www.themealdb.com/api/json/v1/1/';
-    break;
-  default:
-    break;
+    BASE = 'https://www.themealdb.com/api/json/v1/1/'; break;
+  default: break;
   }
   switch (type) {
   case 'ingredient': { // filter types
@@ -36,6 +33,12 @@ const fetchAPI = async (chosenAPI = 'Foods', type, searchQuery = '') => {
   }
   case 'details': {
     API_URL = `${BASE}lookup.php?i=${searchQuery}`; break;
+  }
+  case 'random': {
+    API_URL = `${BASE}random.php`; break;
+  }
+  case 'ingredientDetails': {
+    API_URL = `${BASE}lookup.php?iid=${searchQuery}`; break;
   }
   default: {
     API_URL = `${BASE}list.php?i=list`; break;
