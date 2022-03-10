@@ -34,6 +34,9 @@ const fetchAPI = async (chosenAPI = 'Foods', type, searchQuery = '') => {
   case 'filterCategory': {
     API_URL = `${BASE}filter.php?c=${searchQuery}`; break;
   }
+  case 'details': {
+    API_URL = `${BASE}lookup.php?i=${searchQuery}`; break;
+  }
   default: {
     API_URL = `${BASE}list.php?i=list`; break;
   }

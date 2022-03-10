@@ -35,6 +35,33 @@
     focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150
     ease-in-out m-1;
   }
+  .details {
+    @apply flex flex-col
+  }
+  .details__image {
+    @apply m-auto max-w-sm w-screen;
+  }
+  .details__header, .details__body {
+    @apply p-4
+  }
+  .details__list {
+    @apply mb-6
+  }
+  .details__body {
+    @apply mb-10
+  }
+  .details__title {
+    @apply flex justify-between
+  }
+  .details__name {
+    @apply text-3xl
+  }
+  .details__h1 {
+    @apply mb-4 text-xl
+  }
+  .details__button {
+    @apply mb-20 text-center
+  }
 }
 
 /* ! classes non tailwind */

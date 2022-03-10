@@ -1,8 +1,12 @@
 import React from 'react';
+import '../../index.css';
+import DrinkDetailCard from '../../components/DrinkDetailCard';
 
 function DrinkProgress() {
   return (
-    <div>DrinkProgress</div>
+    <div>
+      <DrinkDetailCard />
+    </div>
   );
 }
 
