@@ -55,8 +55,6 @@ function ProviderApp({ children }) {
   const prevDrinkCategory = usePrevious(filterDrinkCategory);
 
   useEffect(() => {
-    console.log('prev -->', prevFoodCategory, 'current -->', filterFoodCategory);
-    console.log('clickFoodCartegory', clickFoodCategory);
     if (filterFoodCategory === 'all') {
       handleFoods('all');
     } else if (filterFoodCategory
@@ -72,8 +70,6 @@ function ProviderApp({ children }) {
   }, [clickFoodCategory]);
 
   useEffect(() => {
-    console.log('prev -->', prevDrinkCategory, 'current -->', filterDrinkCategory);
-    console.log('clickFoodCartegory', clickDrinkCategory);
     if (filterDrinkCategory === 'all') {
       handleDrinks('all');
     } else if (filterDrinkCategory
