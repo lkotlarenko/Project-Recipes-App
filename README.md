@@ -498,9 +498,9 @@ ingredientes: https://www.themealdb.com/api/json/v1/1/list.php?i=list
 As fotos dos ingredientes vêm de um end-point padronizado com a seguinte lógica:
 
 ```
-https://www.themealdb.com/images/ingredients/{nome-do-ingrediente}.png
+https://www.themealdb.com/images/ingredients/{nome-do-ingrediente}-Small.png
 // exemplo com "Lime"
-https://www.themealdb.com/images/ingredients/Lime.png
+https://www.themealdb.com/images/ingredients/Lime-Small.png
 ```
 
 ### The CockTailDB API
