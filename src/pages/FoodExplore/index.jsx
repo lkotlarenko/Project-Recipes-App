@@ -2,15 +2,14 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
+import fetchAPI from '../../services/drinks&mealsAPI';
 
 function FoodExplore() {
-  const RANDOM_FOOD_ENDPOINT = 'https://www.themealdb.com/api/json/v1/1/random.php';
   const history = useHistory();
 
   const handleSurpriseMe = async () => {
-    const response = await fetch(RANDOM_FOOD_ENDPOINT);
-    const data = await response.json();
-    history.push(`/foods/${data.meals[0].idMeal}`);
+    const response = await fetchAPI('foods', 'random');
+    history.push(`/foods/${response.meals[0].idMeal}`);
   };
 
   return (

@@ -15,6 +15,8 @@ function DrinkDetailCard() {
 
   useEffect(() => {
     handleDetails('drinks', 'details', recipeId);
+  // essa linha precisa do [] vazio para executar apenas quando montado e evitar loop
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

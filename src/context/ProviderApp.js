@@ -18,6 +18,7 @@ function ProviderApp({ children }) {
   const [foodCategories, setFoodCategories] = useState([]);
   const [foodDetails, setFoodDetails] = useState([]);
   const [foods, setFoods] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
   const [isDisabled, setIsDisabled] = useState(true);
   const [password, setPassword] = useState('');
   const [progress, setProgress] = useState((segment === 'in-progress'));
@@ -53,6 +54,12 @@ function ProviderApp({ children }) {
     const allDetails = await fetchAPI(chosenAPI, type, searchQuery);
     if (chosenAPI === 'foods') setFoodDetails(allDetails.meals);
     if (chosenAPI === 'drinks') setDrinkDetails(allDetails.drinks);
+  };
+
+  const handleIngredients = async (chosenApi) => {
+    const allIngredients = await fetchAPI(chosenApi);
+    if (chosenApi === 'foods') setIngredients(allIngredients.meals);
+    if (chosenApi === 'drinks') setIngredients(allIngredients.drinks);
   };
 
   // https://stackoverflow.com/questions/53446020/how-to-compare-oldvalues-and-newvalues-on-react-hooks-useeffect
@@ -108,6 +115,7 @@ function ProviderApp({ children }) {
     foodCategories,
     foodDetails,
     foods,
+    ingredients,
     isDisabled,
     password,
     progress,
@@ -118,6 +126,7 @@ function ProviderApp({ children }) {
     changeButtonSearch,
     changeSearchName,
     handleDetails,
+    handleIngredients,
     setClickDrinkCategory,
     setClickFoodCategory,
     setCurrentPage,
