@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import Footer from '../../components/Footer';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 import ContextApp from '../../context/ContextApp';
 import '../../index.css';
@@ -64,6 +65,7 @@ function FoodMain() {
             </button>
           )) }
       </div>
+      <Footer />
     </main>
   );
 }

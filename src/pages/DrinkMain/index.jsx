@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import Footer from '../../components/Footer';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 import ContextApp from '../../context/ContextApp';
-// import Footer from '../../components/Footer';
 import '../../index.css';
 
 function DrinkMain() {
@@ -66,6 +66,7 @@ function DrinkMain() {
             </button>
           )) }
       </div>
+      <Footer />
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
+import Footer from '../../components/Footer';
 
 function Profile({ history }) {
   const userEmail = JSON.parse(localStorage.getItem('user'));
-  if (userEmail === null) return <HeaderWithSearch name="Profile" verific={ false } />;
   return (
     <div>
       <HeaderWithSearch name="Profile" verific={ false } />
@@ -47,6 +47,7 @@ function Profile({ history }) {
           </div>
         </div>
       ) }
+      <Footer />
     </div>
   );
 }
