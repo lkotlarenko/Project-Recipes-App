@@ -1,8 +1,11 @@
 import React from 'react';
+import DetailsCard from '../../components/DetailsCard';
 
 function FoodDetails() {
   return (
-    <div>FoodDetails</div>
+    <div>
+      <DetailsCard />
+    </div>
   );
 }
 

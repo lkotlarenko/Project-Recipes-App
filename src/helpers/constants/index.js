@@ -13,3 +13,4 @@ export const TWELVE = 12;
 export const THIRTEEN = 13;
 export const FOURTEEN = 14;
 export const FIFTEEN = 15;
+export const TOOLTIP_TIMER = 1000;

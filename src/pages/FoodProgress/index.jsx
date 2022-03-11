@@ -1,8 +1,12 @@
 import React from 'react';
+import '../../index.css';
+import DetailsCard from '../../components/DetailsCard';
 
 function FoodProgress() {
   return (
-    <div>FoodProgress</div>
+    <div>
+      <DetailsCard />
+    </div>
   );
 }
 

@@ -10,13 +10,12 @@ function ProviderApp({ children }) {
   const [clickFoodCategory, setClickFoodCategory] = useState(false);
   const [currentPage, setCurrentPage] = useState('foods');
   const [drinkCategories, setDrinkCategories] = useState([]);
-  const [drinkDetails, setDrinkDetails] = useState([]);
   const [drinks, setDrinks] = useState([]);
   const [email, setEmail] = useState('');
   const [filterDrinkCategory, setFilterDrinkCategory] = useState('');
   const [filterFoodCategory, setFilterFoodCategory] = useState('');
   const [foodCategories, setFoodCategories] = useState([]);
-  const [foodDetails, setFoodDetails] = useState([]);
+  const [details, setDetails] = useState([]);
   const [foods, setFoods] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -52,8 +51,8 @@ function ProviderApp({ children }) {
 
   const handleDetails = async (chosenAPI, type, searchQuery) => {
     const allDetails = await fetchAPI(chosenAPI, type, searchQuery);
-    if (chosenAPI === 'foods') setFoodDetails(allDetails.meals);
-    if (chosenAPI === 'drinks') setDrinkDetails(allDetails.drinks);
+    if (chosenAPI === 'foods') setDetails(allDetails.meals);
+    if (chosenAPI === 'drinks') setDetails(allDetails.drinks);
   };
 
   const handleIngredients = async (chosenApi) => {
@@ -109,11 +108,10 @@ function ProviderApp({ children }) {
     clickFoodCategory,
     currentPage,
     drinkCategories,
-    drinkDetails,
     drinks,
     email,
     foodCategories,
-    foodDetails,
+    details,
     foods,
     ingredients,
     isDisabled,
