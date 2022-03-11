@@ -4,7 +4,7 @@ import ContextApp from '../../context/ContextApp';
 import shareBtn from '../../images/shareIcon.svg';
 import whiteFavBtn from '../../images/whiteHeartIcon.svg';
 import blackFavBtn from '../../images/blackHeartIcon.svg';
-import { TOOLTIP_TIMER } from '../../helpers/constants';
+import { TOOLTIP_TIMER, RANGE } from '../../helpers/constants';
 
 function FavShareButtons(props) {
   const { details } = useContext(ContextApp);
@@ -27,15 +27,18 @@ function FavShareButtons(props) {
   };
 
   // share btn ref:https://orclqa.com/copy-url-clipboard/
+  // ref: https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
   const handleShare = () => {
     const urlElement = document.createElement('input');
     const link = document.querySelector('#shareBtnMsg');
-    const url = link.appendChild(urlElement);
-    url.value = window.location.href;
-    url.focus();
-    url.select();
-    document.execCommand('copy');
-    url.parentNode.removeChild(url);
+    // const url = link.appendChild(urlElement);
+    urlElement.value = window.location.href;
+    urlElement.focus();
+    urlElement.select();
+    urlElement.setSelectionRange(0, RANGE); /* For mobile devices */
+    navigator.clipboard.writeText(urlElement.value);
+    // document.execCommand('copy');
+    // url.parentNode.removeChild(url);
     link.style.display = 'block';
     setTimeout(() => { link.style.display = 'none'; }, TOOLTIP_TIMER);
   };
