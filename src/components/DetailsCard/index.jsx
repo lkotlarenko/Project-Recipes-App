@@ -56,18 +56,19 @@ function DrinkDetailCard() {
                 const ingredient = detail[`strIngredient${currentIndex}`];
                 const measure = detail[`strMeasure${currentIndex}`];
                 return (
-                  <li key={ keyIndex } data-testid={ `${index}-ingredient-step` }>
-                    { (progress) && (ingredient && <input type="checkbox" />) }
-                    { ingredient && (
-                      <span
-                        data-testid={ keyIndex !== null
-                        && `${keyIndex}-ingredient-name-and-measure` }
-                      >
-                        {` ${ingredient} - ${measure}`}
-                      </span>
-                    ) }
-                  </li>
-                );
+                  keyIndex !== null
+                  && (
+                    <li key={ keyIndex } data-testid={ `${index}-ingredient-step` }>
+                      { (progress) && (ingredient && <input type="checkbox" />) }
+                      { ingredient && (
+                        <span
+                          data-testid={ `${keyIndex}-ingredient-name-and-measure` }
+                        >
+                          {` ${ingredient} - ${measure}`}
+                        </span>
+                      ) }
+                    </li>
+                  ));
               })}
             </ul>
             <div className="details__h1">Instructions:</div>

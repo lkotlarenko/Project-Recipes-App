@@ -45,9 +45,9 @@ function FavShareButtons(props) {
 
   const handleFavorite = () => {
     const favoriteRecipe = [{
-      id: detailedItem[`id${term}`],
-      type: detailedItem[`${term}`],
-      nationality: detailedItem[`id${term}`],
+      id: currentItemId,
+      type: term,
+      nationality: (term === 'Drink') ? null : detailedItem.strArea,
       category: detailedItem.strCategory,
       alcoholicOrNot: detailedItem.strAlcoholic,
       name: detailedItem[`str${term}`],
