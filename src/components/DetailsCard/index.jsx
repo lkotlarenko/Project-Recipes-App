@@ -56,7 +56,7 @@ function DrinkDetailCard() {
                 const ingredient = detail[`strIngredient${currentIndex}`];
                 const measure = detail[`strMeasure${currentIndex}`];
                 return (
-                  <li key={ keyIndex }>
+                  <li key={ keyIndex } data-testid={ `${index}-ingredient-step` }>
                     { (progress) && (ingredient && <input type="checkbox" />) }
                     { ingredient && (
                       <span
