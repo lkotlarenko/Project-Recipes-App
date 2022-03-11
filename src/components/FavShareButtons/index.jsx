@@ -12,6 +12,16 @@ function FavShareButtons(props) {
   const [favorite, setFavorite] = useState();
   const { term } = props;
   const currentItemId = detailedItem[`id${term}`];
+  const newTerm = (term === 'Drink') ? 'drink' : 'food';
+  const favoriteRecipe = [{
+    id: currentItemId,
+    type: newTerm,
+    nationality: (term === 'Drink') ? null : detailedItem.strArea,
+    category: (detailedItem.strCategory) ? detailedItem.strCategory : '',
+    alcoholicOrNot: (term === 'Drink') ? detailedItem.strAlcoholic : '',
+    name: detailedItem[`str${term}`],
+    image: detailedItem[`str${term}Thumb`],
+  }];
 
   const checkFavorite = () => {
     const getFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
@@ -31,28 +41,16 @@ function FavShareButtons(props) {
   const handleShare = () => {
     const urlElement = document.createElement('input');
     const link = document.querySelector('#shareBtnMsg');
-    // const url = link.appendChild(urlElement);
     urlElement.value = window.location.href;
     urlElement.focus();
     urlElement.select();
     urlElement.setSelectionRange(0, RANGE); /* For mobile devices */
     navigator.clipboard.writeText(urlElement.value);
-    // document.execCommand('copy');
-    // url.parentNode.removeChild(url);
     link.style.display = 'block';
     setTimeout(() => { link.style.display = 'none'; }, TOOLTIP_TIMER);
   };
 
   const handleFavorite = () => {
-    const favoriteRecipe = [{
-      id: currentItemId,
-      type: term,
-      nationality: (term === 'Drink') ? null : detailedItem.strArea,
-      category: detailedItem.strCategory,
-      alcoholicOrNot: detailedItem.strAlcoholic,
-      name: detailedItem[`str${term}`],
-      image: detailedItem[`str${term}Thumb`],
-    }];
     const getFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
     const newArray = [];
     if (getFavorites && getFavorites.length > 0) {
