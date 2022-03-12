@@ -135,7 +135,12 @@ function HeaderWithSearch({ name, verifc }) {
           data-testid="profile-top-btn"
           onClick={ onClickButton }
         >
-          <input type="image" src={ ProfileButton } alt={ name } />
+          <input
+            type="image"
+            src={ ProfileButton }
+            alt={ name }
+            className="transform transition duration-300 hover:scale-110"
+          />
         </button>
         <h2 className="text-2xl" data-testid="page-title">
           {name}
