@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 import shareBtn from '../../images/shareIcon.svg';
 import blackFavBtn from '../../images/blackHeartIcon.svg';
@@ -6,6 +7,7 @@ import { TOOLTIP_TIMER, RANGE } from '../../helpers/constants';
 
 function FoodRecipes() {
   const [favorite, setFavorite] = useState([]);
+  const [buttomfavorite, setbuttomfavorite] = useState('all');
   useEffect(() => {
     const getFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
     setFavorite(getFavorites);
@@ -30,6 +32,14 @@ function FoodRecipes() {
     setFavorite(newFavorites);
   };
 
+  const filterButtom = (item) => {
+    if (buttomfavorite === 'drink') {
+      return item.type !== 'foods' && item.type !== 'food';
+    }
+    if (buttomfavorite === 'food') return item.type !== 'drink';
+    if (buttomfavorite === 'all') return item.type;
+  };
+
   return (
     <div>
       <HeaderWithSearch name="Favorite Recipes" verifc={ false } />
@@ -38,6 +48,7 @@ function FoodRecipes() {
           type="button"
           className="tag-style"
           data-testid="filter-by-all-btn"
+          onClick={ () => setbuttomfavorite('all') }
         >
           All
         </button>
@@ -45,6 +56,7 @@ function FoodRecipes() {
           type="button"
           className="tag-style"
           data-testid="filter-by-food-btn"
+          onClick={ () => setbuttomfavorite('food') }
         >
           Food
         </button>
@@ -52,23 +64,28 @@ function FoodRecipes() {
           type="button"
           className="tag-style"
           data-testid="filter-by-drink-btn"
+          onClick={ () => setbuttomfavorite('drink') }
         >
           Drinks
         </button>
       </div>
       <div className="food__all">
-        {favorite.map((e, index) => (
+        { favorite && favorite.filter(filterButtom).map((e, index) => (
           <div key={ e.id }>
-            <h3 data-testid={ `${index}-horizontal-name` }>{e.name}</h3>
+            <Link to={ `/${e.type}s/${e.id}` }>
+              <h3 data-testid={ `${index}-horizontal-name` }>{e.name}</h3>
+            </Link>
             <h3 data-testid={ `${index}-horizontal-top-text` }>
               { e.type === 'foods' || e.type === 'food' ? ` ${e.nationality} - 
               ${e.category}` : e.alcoholicOrNot}
             </h3>
-            <img
-              src={ e.image }
-              alt={ e.name }
-              data-testid={ `${index}-horizontal-image` }
-            />
+            <Link to={ `/${e.type}s/${e.id}` }>
+              <img
+                src={ e.image }
+                alt={ e.name }
+                data-testid={ `${index}-horizontal-image` }
+              />
+            </Link>
             <div className="favShareBtn">
               <div id="shareBtnMsg" className="shareBtnMsg">Link copied!</div>
               <button type="button" onClick={ () => removeFavorite(e.id) }>
@@ -89,7 +106,7 @@ function FoodRecipes() {
               </button>
             </div>
           </div>
-        )) }
+        ))}
       </div>
     </div>
   );
