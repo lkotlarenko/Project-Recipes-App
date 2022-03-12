@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 import shareBtn from '../../images/shareIcon.svg';
 import blackFavBtn from '../../images/blackHeartIcon.svg';
-// import { TOOLTIP_TIMER, RANGE } from '../../helpers/constants';
+import { TOOLTIP_TIMER, RANGE } from '../../helpers/constants';
 
 function FoodRecipes() {
   const [favorite, setFavorite] = useState([]);
@@ -10,7 +10,22 @@ function FoodRecipes() {
     const getFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
     setFavorite(getFavorites);
   }, []);
-  console.log(favorite);
+
+  const handleShare = (type, id) => {
+    console.log(type);
+    console.log(id);
+    const urlElement = document.createElement('input');
+    const link = document.querySelector('#shareBtnMsg');
+    urlElement.value = window.location.href;
+    urlElement.focus();
+    urlElement.select();
+    urlElement.setSelectionRange(0, RANGE); /* For mobile devices */
+    if (type === 'foods' || type === 'food') return navigator.clipboard.writeText(`http://localhost:3000/foods/${id}`);
+    if (type === 'drinks') return navigator.clipboard.writeText(`http://localhost:3000/drinks/${id}`);
+    link.style.display = 'block';
+    setTimeout(() => { link.style.display = 'none'; }, TOOLTIP_TIMER);
+  };
+
   return (
     <div>
       <HeaderWithSearch name="Favorite Recipes" verifc={ false } />
@@ -51,7 +66,7 @@ function FoodRecipes() {
               data-testid={ `${index}-horizontal-image` }
             />
             <div className="favShareBtn">
-              {/* <div id="shareBtnMsg" className="shareBtnMsg">Link copied!</div> */}
+              <div id="shareBtnMsg" className="shareBtnMsg">Link copied!</div>
               <button type="button">
                 <img
                   src={ blackFavBtn }
@@ -60,7 +75,7 @@ function FoodRecipes() {
                   className="favBtn"
                 />
               </button>
-              <button type="button">
+              <button type="button" onClick={ () => handleShare(e.type, e.id) }>
                 <img
                   src={ shareBtn }
                   alt="Share"
