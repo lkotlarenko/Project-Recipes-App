@@ -12,8 +12,6 @@ function FoodRecipes() {
   }, []);
 
   const handleShare = (type, id) => {
-    console.log(type);
-    console.log(id);
     const urlElement = document.createElement('input');
     const link = document.querySelector('#shareBtnMsg');
     urlElement.value = window.location.href;
@@ -24,6 +22,12 @@ function FoodRecipes() {
     if (type === 'drinks') return navigator.clipboard.writeText(`http://localhost:3000/drinks/${id}`);
     link.style.display = 'block';
     setTimeout(() => { link.style.display = 'none'; }, TOOLTIP_TIMER);
+  };
+  const removeFavorite = (id) => {
+    const getFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const newFavorites = getFavorites.filter((item) => item.id !== id);
+    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
+    setFavorite(newFavorites);
   };
 
   return (
@@ -67,7 +71,7 @@ function FoodRecipes() {
             />
             <div className="favShareBtn">
               <div id="shareBtnMsg" className="shareBtnMsg">Link copied!</div>
-              <button type="button">
+              <button type="button" onClick={ () => removeFavorite(e.id) }>
                 <img
                   src={ blackFavBtn }
                   alt="Favorite"
