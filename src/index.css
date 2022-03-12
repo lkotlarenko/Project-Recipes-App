@@ -36,80 +36,97 @@
     ease-in-out m-1;
   }
   .details {
-    @apply flex flex-col
+    @apply flex flex-col;
   }
   .details__image {
     @apply m-auto max-w-sm w-screen;
   }
-  .details__header, .details__body {
-    @apply p-4
+  .details__header,
+  .details__body {
+    @apply p-4;
   }
   .details__list {
-    @apply mb-6
+    @apply mb-6;
   }
   .details__body {
-    @apply mb-3
+    @apply mb-3;
   }
   .details__title {
-    @apply flex justify-between
+    @apply flex justify-between;
   }
   .details__name {
-    @apply text-3xl
+    @apply text-3xl;
   }
   .details__h1 {
-    @apply mb-4 text-xl
+    @apply mb-4 text-xl;
   }
   .details__button {
     @apply inline-block px-6 py-5 bg-blue-600 text-white font-medium text-xl
     leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg
     focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
     active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out
-    text-center fixed bottom-0 w-screen
+    text-center fixed bottom-0 w-screen;
   }
   .foods__video-div {
-    @apply flex justify-center mb-3
+    @apply flex justify-center mb-3;
   }
   .foods__video {
-    @apply min-w-fit
+    @apply min-w-fit;
   }
   .arrow__left {
-    @apply carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0
+    @apply carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0;
   }
   .arrow__right {
-    @apply carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0
+    @apply carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0;
   }
   .arrow__prev {
-    @apply carousel-control-prev-icon inline-block bg-no-repeat
+    @apply carousel-control-prev-icon inline-block bg-no-repeat;
   }
   .arrow__next {
-    @apply carousel-control-next-icon inline-block bg-no-repeat
+    @apply carousel-control-next-icon inline-block bg-no-repeat;
   }
   .recommended {
-    @apply m-5 mb-8 max-w-full overflow-hidden
+    @apply m-5 mb-8 max-w-full overflow-hidden;
   }
   .recommended__frame {
-    @apply flex m-5 overflow-x-scroll
+    @apply flex m-5 overflow-x-scroll;
   }
   .recommended__card {
-    @apply min-w-[45vw] p-5
+    @apply min-w-[45vw] p-5;
   }
   .recommended__title {
-    @apply text-2xl
+    @apply text-2xl;
   }
   .favShareBtn {
-    @apply flex flex-row
+    @apply flex flex-row;
   }
-  .favBtn, .shareBtn {
-    @apply pr-3
+  .favBtn,
+  .shareBtn {
+    @apply pr-3;
   }
   .siteUrl {
-    @apply hidden
+    @apply hidden;
   }
   .favShareBtn {
-    @apply relative
+    @apply relative;
   }
   .shareBtnMsg {
-    @apply hidden absolute z-10 right-[1px] top-[-40px] w-24
+    @apply hidden absolute z-10 right-[1px] top-[-40px] w-24;
+  }
+  .card-style {
+    @apply rounded-lg transform transition duration-300 hover:scale-110;
+  }
+  .dropdown-btn {
+    @apply px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap;
+  }
+  .dropdown-list {
+    @apply absolute bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none;
+  }
+  .dropdown-item {
+    @apply text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-white hover:bg-gray-100;
+  }
+  .card-effect {
+    @apply transform transition duration-300 hover:scale-110;
   }
 }
 
@@ -150,14 +167,14 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

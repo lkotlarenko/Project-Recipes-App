@@ -24,14 +24,17 @@ function IngredientCard({ data, type, index }) {
   };
 
   return (
-    <div data-testid={ `${index}-ingredient-card` }>
+    <div
+      data-testid={ `${index}-ingredient-card` }
+      className="card-effect"
+    >
       <button
         type="button"
         onClick={ handleRedirect }
       >
         <img
           src={ type === 'drinks' ? DRINK_IMG_SRC : MEAL_IMG_SRC }
-          className="h-36"
+          className="h-36 rounded-lg"
           alt={ data }
           data-testid={ `${index}-card-img` }
         />

@@ -69,9 +69,9 @@ function FoodRecipes() {
           Drinks
         </button>
       </div>
-      <div className="food__all">
+      <div className="food__all flex p-2 flex-wrap justify-evenly">
         { favorite && favorite.filter(filterButtom).map((e, index) => (
-          <div key={ e.id }>
+          <div key={ e.id } className="card-effect">
             <Link to={ `/${e.type}s/${e.id}` }>
               <h3 data-testid={ `${index}-horizontal-name` }>{e.name}</h3>
             </Link>
@@ -84,6 +84,7 @@ function FoodRecipes() {
                 src={ e.image }
                 alt={ e.name }
                 data-testid={ `${index}-horizontal-image` }
+                className="rounded-lg"
               />
             </Link>
             <div className="favShareBtn">

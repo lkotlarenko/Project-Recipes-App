@@ -7,8 +7,13 @@ import ContextApp from '../../context/ContextApp';
 import '../../index.css';
 
 function FoodMain() {
-  const { clickFoodCategory, foodCategories, foods,
-    setClickFoodCategory, setFilterFoodCategory } = useContext(ContextApp);
+  const {
+    clickFoodCategory,
+    foodCategories,
+    foods,
+    setClickFoodCategory,
+    setFilterFoodCategory,
+  } = useContext(ContextApp);
   const FIVE = 5;
   const TWELVE = 12;
   const history = useHistory();
@@ -28,7 +33,7 @@ function FoodMain() {
         >
           All
         </button>
-        { foodCategories.slice(0, FIVE).map(({ strCategory }, index) => (
+        {foodCategories.slice(0, FIVE).map(({ strCategory }, index) => (
           <button
             type="button"
             key={ index }
@@ -39,31 +44,34 @@ function FoodMain() {
             } }
             data-testid={ `${strCategory}-category-filter` }
           >
-            { strCategory }
+            {strCategory}
           </button>
-        )) }
+        ))}
       </div>
-      <div className="food__board">
-        { foods && foods.slice(0, TWELVE)
-          .map(({ strMeal, strMealThumb, idMeal }, index) => (
-            <button
-              key={ index }
-              type="button"
-              onClick={ () => history.push(`/foods/${idMeal}`) }
-            >
-              <div
-                data-testid={ `${index}-recipe-card` }
-                className="food__all"
+      <div className="food__board flex p-2 flex-wrap justify-evenly">
+        {foods
+          && foods
+            .slice(0, TWELVE)
+            .map(({ strMeal, strMealThumb, idMeal }, index) => (
+              <button
+                key={ index }
+                type="button"
+                onClick={ () => history.push(`/foods/${idMeal}`) }
               >
-                <span data-testid={ `${index}-card-name` }>{ strMeal }</span>
-                <img
-                  src={ strMealThumb }
-                  alt={ strMeal }
-                  data-testid={ `${index}-card-img` }
-                />
-              </div>
-            </button>
-          )) }
+                <div
+                  data-testid={ `${index}-recipe-card` }
+                  className="food__all card-effect"
+                >
+                  <span data-testid={ `${index}-card-name` }>{strMeal}</span>
+                  <img
+                    src={ strMealThumb }
+                    alt={ strMeal }
+                    data-testid={ `${index}-card-img` }
+                    className="rounded-lg"
+                  />
+                </div>
+              </button>
+            ))}
       </div>
       <Footer />
     </main>
