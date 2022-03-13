@@ -111,6 +111,12 @@
   .shareBtnMsg {
     @apply hidden absolute z-10 right-[1px] top-[-40px] w-24
   }
+  .progress__line {
+    @apply line-through
+  }
+  .progress__noline {
+    @apply no-underline
+  }
 }
 
 /* ! classes non tailwind */
