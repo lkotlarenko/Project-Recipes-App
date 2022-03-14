@@ -17,6 +17,7 @@ function HeaderWithSearch({ name, verifc }) {
     searchName,
     setDrinks,
     setFoods,
+    setIsLoading,
     setRadioFilter,
   } = useContext(ContextApp);
 
@@ -27,7 +28,7 @@ function HeaderWithSearch({ name, verifc }) {
 
   const handleSearch = async (searchFilter, searchQuery) => {
     if (name === 'Foods') {
-      const data = await fetchAPI(name, searchFilter, searchQuery);
+      const data = await fetchAPI(setIsLoading, name, searchFilter, searchQuery);
       if (!data.meals) {
         global.alert('Sorry, we haven\'t found any recipes for these filters.');
       } else if (data.meals.length === 1) {
@@ -35,7 +36,7 @@ function HeaderWithSearch({ name, verifc }) {
       }
       setFoods(data.meals);
     } else if (name === 'Drinks') {
-      const data = await fetchAPI(name, searchFilter, searchQuery);
+      const data = await fetchAPI(setIsLoading, name, searchFilter, searchQuery);
       if (!data.drinks) {
         global.alert('Sorry, we haven\'t found any recipes for these filters.');
       } else if (data.drinks.length === 1) {

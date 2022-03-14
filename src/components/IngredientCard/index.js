@@ -6,6 +6,7 @@ import ContextApp from '../../context/ContextApp';
 import fetchAPI from '../../services/drinks&mealsAPI';
 
 function IngredientCard({ data, type, index }) {
+  const { setIsLoading } = useContext(ContextApp);
   const MEAL_IMG_SRC = `https://www.themealdb.com/images/ingredients/${data}-Small.png`;
   const DRINK_IMG_SRC = `https://www.thecocktaildb.com/images/ingredients/${data}-Small.png`;
   const { setDrinks, setFoods } = useContext(ContextApp);
@@ -13,11 +14,11 @@ function IngredientCard({ data, type, index }) {
 
   const handleRedirect = async () => {
     if (type === 'foods') {
-      const response = await fetchAPI(type, 'ingredient', data);
+      const response = await fetchAPI(setIsLoading, type, 'ingredient', data);
       setFoods(response.meals);
       history.push('/foods/');
     } else {
-      const response = await fetchAPI(type, 'ingredient', data);
+      const response = await fetchAPI(setIsLoading, type, 'ingredient', data);
       setDrinks(response.drinks);
       history.push('/drinks/');
     }

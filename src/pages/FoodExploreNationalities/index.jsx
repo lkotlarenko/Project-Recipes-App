@@ -1,20 +1,22 @@
 import React, { useContext, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 import fetchAPI from '../../services/drinks&mealsAPI';
 import ContextApp from '../../context/ContextApp';
 import '../../index.css';
+import Loading from '../../components/Loading/index';
+import RecipesBoard from '../../components/RecipesBoard/index';
 
 function FoodExploreNationality() {
-  const { nationalities, setNationalities, foods, setFoods } = useContext(ContextApp);
-  const history = useHistory();
-  const TWELVE = 12;
+  const PAGE_TYPE = 'foods';
+  const {
+    nationalities, setNationalities, setFoods, isLoading, setIsLoading,
+  } = useContext(ContextApp);
 
   useEffect(() => {
     const getNationalities = async () => {
       try {
-        const response = await fetchAPI('foods', 'nationalities');
+        const response = await fetchAPI(setIsLoading, 'foods', 'nationalities');
         const data = await response.meals;
         setNationalities(data);
       } catch (error) {
@@ -29,14 +31,14 @@ function FoodExploreNationality() {
   const getMeals = async (area) => {
     if (area === 'All') {
       try {
-        const response = await fetchAPI('foods', 'all');
+        const response = await fetchAPI(setIsLoading, 'foods', 'all');
         setFoods(response.meals);
       } catch (error) {
         throw new Error(error.message);
       }
     } else {
       try {
-        const response = await fetchAPI('foods', 'nationality', area);
+        const response = await fetchAPI(setIsLoading, 'foods', 'nationality', area);
         setFoods(response.meals);
       } catch (error) {
         throw new Error(error.message);
@@ -59,7 +61,6 @@ function FoodExploreNationality() {
           className="dropdown-btn"
           onChange={ filterByNationality }
         >
-          {/* { selectedArea || 'Nationalities' } */}
           <option
             onChange={ () => filterByNationality('All') }
             className="dropdown-item text-white"
@@ -83,27 +84,7 @@ function FoodExploreNationality() {
         </select>
       </section>
       <div className="flex p-2 flex-wrap justify-evenly">
-        {foods
-          && foods
-            .slice(0, TWELVE)
-            .map(({ strMeal, strMealThumb, idMeal }, index) => (
-              <button
-                key={ index }
-                type="button"
-                className="card-style"
-                onClick={ () => history.push(`/foods/${idMeal}`) }
-              >
-                <div data-testid={ `${index}-recipe-card` } className="food__all">
-                  <span data-testid={ `${index}-card-name` }>{strMeal}</span>
-                  <img
-                    src={ strMealThumb }
-                    alt={ strMeal }
-                    data-testid={ `${index}-card-img` }
-                    className="rounded-lg"
-                  />
-                </div>
-              </button>
-            ))}
+        { isLoading ? <Loading /> : <RecipesBoard type={ PAGE_TYPE } /> }
       </div>
       <Footer />
     </div>
