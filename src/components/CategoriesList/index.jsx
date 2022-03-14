@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ContextApp from '../../context/ContextApp';
 
 function CategoriesList({ type }) {
+  const PAGE_TYPE = type.toUpperCase();
   const FIVE = 5;
   const {
     drinkCategories,
@@ -18,8 +19,8 @@ function CategoriesList({ type }) {
   const [tagCategories, setTagCategories] = useState([]);
 
   const handleTagClick = (categoryName) => {
-    switch (type) {
-    case 'drinks':
+    switch (PAGE_TYPE) {
+    case 'DRINKS':
       if (lastDrinkCategory === categoryName) {
         setFilterDrinkCategory('all');
         setLastDrinkCategory('');
@@ -28,7 +29,7 @@ function CategoriesList({ type }) {
         setLastDrinkCategory(categoryName);
       }
       break;
-    case 'foods':
+    case 'FOODS':
       if (lastFoodCategory === categoryName) {
         setFilterFoodCategory('all');
         setLastFoodCategory('');
@@ -43,12 +44,12 @@ function CategoriesList({ type }) {
   };
 
   useEffect(() => {
-    if (type === 'drinks') {
+    if (PAGE_TYPE === 'DRINKS') {
       setTagCategories(drinkCategories);
-    } else if (type === 'foods') {
+    } else if (PAGE_TYPE === 'FOODS') {
       setTagCategories(foodCategories);
     }
-  }, [drinkCategories, foodCategories, type]);
+  }, [PAGE_TYPE, drinkCategories, foodCategories, type]);
 
   return (
     <section className="flex flex-wrap py-2 justify-center items-center">

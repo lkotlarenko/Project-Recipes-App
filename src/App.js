@@ -1,21 +1,18 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Login from './pages/Login';
-import NotFound from './pages/NotFound';
 import DoneRecipes from './pages/DoneRecipes';
 import DrinkDetails from './pages/DrinkDetails';
-import DrinkExplore from './pages/DrinkExplore';
-import DrinkExploreIngredients from './pages/DrinkExploreIngredients';
-import DrinkMain from './pages/DrinkMain';
 import DrinkProgress from './pages/DrinkProgress';
-import ExploreMain from './pages/ExploreMain';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import FoodDetails from './pages/FoodDetails';
-import FoodExplore from './pages/FoodExplore';
-import FoodExploreIngredients from './pages/FoodExploreIngredients';
 import FoodExploreNationalities from './pages/FoodExploreNationalities';
-import FoodMain from './pages/FoodMain';
 import FoodProgress from './pages/FoodProgress';
+import ExploreIngredients from './pages/ExploreIngredients';
+import ExploreMain from './pages/ExploreMain';
+import ExplorePage from './pages/ExplorePage';
+import MainRecipes from './pages/MainRecipes';
+import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
 
 function App() {
@@ -25,13 +22,13 @@ function App() {
         <Route exact path="/" component={ Login } />
         <Route exact path="/done-recipes" component={ DoneRecipes } />
         <Route exact path="/drinks/:recipeId" component={ DrinkDetails } />
-        <Route exact path="/explore/drinks" component={ DrinkExplore } />
-        <Route
-          exact
-          path="/explore/drinks/ingredients"
-          component={ DrinkExploreIngredients }
-        />
-        <Route exact path="/drinks" component={ DrinkMain } />
+        <Route exact path="/explore/drinks">
+          <ExplorePage type="drinks" />
+        </Route>
+        <Route exact path="/explore/drinks/ingredients">
+          <ExploreIngredients type="drinks" />
+        </Route>
+        <Route exact path="/drinks"><MainRecipes pageType="drinks" /></Route>
         <Route
           exact
           path="/drinks/:recipeId/in-progress"
@@ -40,18 +37,18 @@ function App() {
         <Route exact path="/explore" component={ ExploreMain } />
         <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
         <Route exact path="/foods/:recipeId" component={ FoodDetails } />
-        <Route exact path="/explore/foods" component={ FoodExplore } />
-        <Route
-          exact
-          path="/explore/foods/ingredients"
-          component={ FoodExploreIngredients }
-        />
+        <Route exact path="/explore/foods">
+          <ExplorePage type="foods" />
+        </Route>
+        <Route exact path="/explore/foods/ingredients">
+          <ExploreIngredients type="foods" />
+        </Route>
         <Route
           exact
           path="/explore/foods/nationalities"
           component={ FoodExploreNationalities }
         />
-        <Route exact path="/foods" component={ FoodMain } />
+        <Route exact path="/foods"><MainRecipes pageType="foods" /></Route>
         <Route
           exact
           path="/foods/:recipeId/in-progress"

@@ -39,7 +39,12 @@ function IngredientCard({ data, type, index }) {
           alt={ data }
           data-testid={ `${index}-card-img` }
         />
-        <h2 data-testid={ `${index}-card-name` }>{data}</h2>
+        <h2
+          data-testid={ `${index}-card-name` }
+          className="w-36 text-base truncate"
+        >
+          {data}
+        </h2>
       </button>
     </div>
   );

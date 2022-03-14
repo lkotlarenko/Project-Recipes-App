@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import ContextApp from '../../context/ContextApp';
 import CategoriesList from '../../components/CategoriesList';
 import Footer from '../../components/Footer';
@@ -7,20 +8,25 @@ import Loading from '../../components/Loading';
 import RecipesBoard from '../../components/RecipesBoard';
 import '../../index.css';
 
-function FoodMain() {
-  const PAGE_TYPE = 'foods';
+function MainRecipes({ pageType }) {
+  // https://www.digitalocean.com/community/tutorials/js-capitalizing-strings
+  const PAGE_TYPE = pageType.replace(/^\w/, (c) => c.toUpperCase());
   const { isLoading } = useContext(ContextApp);
 
   return (
-    <main>
-      <HeaderWithSearch name="Foods" verifc="search" />
+    <div>
+      <HeaderWithSearch name={ PAGE_TYPE } verifc="search" />
       <CategoriesList type={ PAGE_TYPE } />
-      <div className="food__board flex p-2 flex-wrap justify-evenly">
+      <div className="drink__board flex p-2 flex-wrap justify-evenly">
         { isLoading ? <Loading /> : <RecipesBoard type={ PAGE_TYPE } /> }
       </div>
       <Footer />
-    </main>
+    </div>
   );
 }
 
-export default FoodMain;
+MainRecipes.propTypes = {
+  pageType: PropTypes.string,
+}.isRequired;
+
+export default MainRecipes;
