@@ -10,6 +10,7 @@ function RecipeBoard({ type }) {
   const { foods, drinks } = useContext(ContextApp);
   const history = useHistory();
   const TWELVE = 12;
+  const REDIRECT_PATH = type.toLowerCase();
 
   const [cardInfo, setCardInfo] = useState([]);
   const [CARD_NAME, setCardName] = useState('');
@@ -17,22 +18,23 @@ function RecipeBoard({ type }) {
   const [CARD_ID, setCardId] = useState('');
 
   useEffect(() => {
-    switch (type) {
-    case 'drinks':
+    const PAGE_TYPE = type.toUpperCase();
+    switch (PAGE_TYPE) {
+    case 'DRINKS':
       setCardName('strDrink');
       setCardThumb('strDrinkThumb');
       setCardId('idDrink');
       setCardInfo(drinks);
       break;
 
-    case 'foods':
+    case 'FOODS':
       setCardName('strMeal');
       setCardThumb('strMealThumb');
       setCardId('idMeal');
       setCardInfo(foods);
       break;
     default:
-      throw new Error('pass a valid type as prop');
+      throw new Error(`pass a valid type as prop ${PAGE_TYPE}`);
     }
   }, [drinks, foods, type]);
 
@@ -47,13 +49,18 @@ function RecipeBoard({ type }) {
               key={ index }
               type="button"
               className="card-style"
-              onClick={ () => history.push(`/${type}/${id}`) }
+              onClick={ () => history.push(`/${REDIRECT_PATH}/${id}`) }
             >
               <div
                 data-testid={ `${index}-recipe-card` }
                 className="food__all card-effect"
               >
-                <span data-testid={ `${index}-card-name` }>{name}</span>
+                <h4
+                  data-testid={ `${index}-card-name` }
+                  className="w-40 text-base truncate"
+                >
+                  {name}
+                </h4>
                 <img
                   src={ thumb }
                   alt={ name }
