@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ContextApp from './ContextApp';
 import fetchAPI from '../services/drinks&mealsAPI';
@@ -6,19 +6,20 @@ import fetchAPI from '../services/drinks&mealsAPI';
 function ProviderApp({ children }) {
   const segment = window.location.pathname.split('/').pop();
 
-  const [clickDrinkCategory, setClickDrinkCategory] = useState(false);
-  const [clickFoodCategory, setClickFoodCategory] = useState(false);
   const [currentPage, setCurrentPage] = useState('foods');
   const [details, setDetails] = useState([]);
   const [drinkCategories, setDrinkCategories] = useState([]);
   const [drinks, setDrinks] = useState([]);
   const [email, setEmail] = useState('');
-  const [filterDrinkCategory, setFilterDrinkCategory] = useState('');
-  const [filterFoodCategory, setFilterFoodCategory] = useState('');
+  const [filterDrinkCategory, setFilterDrinkCategory] = useState('all');
+  const [filterFoodCategory, setFilterFoodCategory] = useState('all');
   const [foodCategories, setFoodCategories] = useState([]);
   const [foods, setFoods] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [isDisabled, setIsDisabled] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [lastDrinkCategory, setLastDrinkCategory] = useState('');
+  const [lastFoodCategory, setLastFoodCategory] = useState('');
   const [nationalities, setNationalities] = useState([]);
   const [password, setPassword] = useState('');
   const [progress, setProgress] = useState((segment === 'in-progress'));
@@ -37,76 +38,48 @@ function ProviderApp({ children }) {
   };
 
   const handleFoods = async (type, searchQuery) => {
-    const allCategories = await fetchAPI('foods', 'categories');
-    const allFoods = await fetchAPI('foods', type, searchQuery);
+    const allCategories = await fetchAPI(setIsLoading, 'foods', 'categories');
+    const allFoods = await fetchAPI(setIsLoading, 'foods', type, searchQuery);
     setFoodCategories(allCategories.meals);
     setFoods(allFoods.meals);
   };
 
   const handleDrinks = async (type, searchQuery) => {
-    const allCategories = await fetchAPI('drinks', 'categories');
-    const allDrinks = await fetchAPI('drinks', type, searchQuery);
+    const allCategories = await fetchAPI(setIsLoading, 'drinks', 'categories');
+    const allDrinks = await fetchAPI(setIsLoading, 'drinks', type, searchQuery);
     setDrinkCategories(allCategories.drinks);
     setDrinks(allDrinks.drinks);
   };
 
   const handleDetails = async (chosenAPI, type, searchQuery) => {
-    const allDetails = await fetchAPI(chosenAPI, type, searchQuery);
+    const allDetails = await fetchAPI(setIsLoading, chosenAPI, type, searchQuery);
     if (chosenAPI === 'foods') setDetails(allDetails.meals);
     if (chosenAPI === 'drinks') setDetails(allDetails.drinks);
   };
 
   const handleIngredients = async (chosenApi) => {
-    const allIngredients = await fetchAPI(chosenApi);
+    const allIngredients = await fetchAPI(setIsLoading, chosenApi);
     if (chosenApi === 'foods') setIngredients(allIngredients.meals);
     if (chosenApi === 'drinks') setIngredients(allIngredients.drinks);
   };
 
-  // https://stackoverflow.com/questions/53446020/how-to-compare-oldvalues-and-newvalues-on-react-hooks-useeffect
-  function usePrevious(value) {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = value;
-    });
-    return ref.current;
-  }
-
-  const prevFoodCategory = usePrevious(filterFoodCategory);
-  const prevDrinkCategory = usePrevious(filterDrinkCategory);
-
   useEffect(() => {
     if (filterFoodCategory === 'all') {
       handleFoods('all');
-    } else if (filterFoodCategory
-      && (((clickFoodCategory) && (prevFoodCategory !== filterFoodCategory))
-      || ((clickFoodCategory) && (prevFoodCategory === filterFoodCategory))
-      || ((!clickFoodCategory) && (prevFoodCategory !== filterFoodCategory)))) {
+    } else if (filterFoodCategory) {
       handleFoods('filterCategory', filterFoodCategory);
-    } else if (clickFoodCategory && (prevFoodCategory === filterFoodCategory)) {
-      handleFoods('all');
-    } else {
-      handleFoods('all');
     }
-  }, [clickFoodCategory, filterFoodCategory, prevFoodCategory]);
+  }, [filterFoodCategory]);
 
   useEffect(() => {
     if (filterDrinkCategory === 'all') {
       handleDrinks('all');
-    } else if (filterDrinkCategory
-      && (((clickDrinkCategory) && (prevDrinkCategory !== filterDrinkCategory))
-      || ((clickDrinkCategory) && (prevDrinkCategory === filterDrinkCategory))
-      || ((!clickDrinkCategory) && (prevDrinkCategory !== filterDrinkCategory)))) {
+    } else if (filterDrinkCategory) {
       handleDrinks('filterCategory', filterDrinkCategory);
-    } else if (clickDrinkCategory && (prevDrinkCategory === filterDrinkCategory)) {
-      handleDrinks('all');
-    } else {
-      handleDrinks('all');
     }
-  }, [clickDrinkCategory, filterDrinkCategory, prevDrinkCategory]);
+  }, [filterDrinkCategory]);
 
   const allData = {
-    clickDrinkCategory,
-    clickFoodCategory,
     currentPage,
     details,
     drinkCategories,
@@ -116,6 +89,9 @@ function ProviderApp({ children }) {
     foods,
     ingredients,
     isDisabled,
+    isLoading,
+    lastDrinkCategory,
+    lastFoodCategory,
     nationalities,
     password,
     progress,
@@ -127,8 +103,6 @@ function ProviderApp({ children }) {
     changeSearchName,
     handleDetails,
     handleIngredients,
-    setClickDrinkCategory,
-    setClickFoodCategory,
     setCurrentPage,
     setDrinks,
     setEmail,
@@ -136,6 +110,9 @@ function ProviderApp({ children }) {
     setFilterFoodCategory,
     setFoods,
     setIsDisabled,
+    setIsLoading,
+    setLastDrinkCategory,
+    setLastFoodCategory,
     setNationalities,
     setPassword,
     setProgress,
