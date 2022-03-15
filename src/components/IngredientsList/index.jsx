@@ -1,66 +1,79 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT,
-  NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN } from '../../helpers/constants';
+import IngredientsListItem from '../IngredientsListItem';
+import ContextApp from '../../context/ContextApp';
 
 function IngredientsList(props) {
-  const [checkIngredient, setCheckIngredient] = useState([]);
-  const [count, setCount] = useState(0);
-  const ingredientIndex = [ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT,
-    NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN];
-  let validIngredients = [];
+  const [ingredientCheck, setIngredientCheck] = useState(false);
+  const [storageValues, setStorageValues] = useState([]);
+  const { setIsBtnFinishDisabled } = useContext(ContextApp);
 
   const {
-    detail,
-    // index,
+    index,
     progress,
+    recipeId,
+    urlDrinks,
+    validIngredient,
+    validIngredients,
   } = props;
 
-  const handleChange = ({ target }) => {
-    console.log(target.checked, 'click');
-    const newArray = validIngredients.filter((validIngredient) => (
-      validIngredient.name !== target.name
-    ));
-    console.log(newArray, 'newarray');
-    validIngredients = [...newArray,
-      { name: target.name, check: target.checked }];
-    console.log(validIngredients, 'validddddd');
-    setCheckIngredient(validIngredients);
+  let ingredients = [];
+  const term2 = (urlDrinks ? 'cocktails' : 'meals');
+
+  const checkBtnDisabled = () => {
+    if (storageValues.length === validIngredients.length) {
+      setIsBtnFinishDisabled(false);
+    } else {
+      setIsBtnFinishDisabled(true);
+    }
   };
 
+  const handleChange = ({ target }) => {
+    let inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    const inProgress = inProgressRecipes && inProgressRecipes[term2];
+    const values = inProgress && inProgress[recipeId];
+    const newValue = (values) ? [...values] : [];
+    setStorageValues(newValue);
+    if (target.checked === true) {
+      ingredients = [...newValue, target.name];
+      setIngredientCheck(true);
+    } else {
+      setIngredientCheck(false);
+      ingredients = [...newValue];
+      ingredients = ingredients
+        .filter((ingredient) => ingredient !== target.name);
+    }
+    inProgressRecipes = {
+      ...inProgressRecipes, [term2]: { [recipeId]: [...ingredients] },
+    };
+    if (ingredients.length === 0) {
+      Object.keys(inProgressRecipes[term2]).filter((array) => array !== recipeId);
+    }
+    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+    checkBtnDisabled();
+  };
+
+  const onLoad = () => {
+    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    const inProgress = inProgressRecipes && inProgressRecipes[term2];
+    const values = inProgress && inProgress[recipeId];
+    if (values) setIngredientCheck(values.some((item) => item === validIngredient));
+    setStorageValues(values);
+    checkBtnDisabled();
+  };
+
+  useEffect(() => {
+    onLoad();
+  }, []);
+
   return (
-    <ul className="details__list">
-      { ingredientIndex.forEach((currentIndex) => {
-        const ingredient = detail[`strIngredient${currentIndex}`];
-        const measure = detail[`strMeasure${currentIndex}`];
-        if (ingredient) {
-          validIngredients.push({ name: `${ingredient} - ${measure}`, check: false });
-        }
-      }) }
-      { setCount((prev) => prev + 1) }
-      { (validIngredients)
-      && validIngredients.map((validIngredient, keyIndex) => (
-        <li key={ keyIndex } data-testid={ `${keyIndex}-ingredient-step` }>
-          { (progress) && (validIngredient && (
-            <input
-              type="checkbox"
-              name={ validIngredient.name }
-              checked={ checkIngredient.checked }
-              onChange={ (event) => handleChange(event) }
-            />)) }
-          { validIngredient && (
-            <span
-              data-testid={ `${keyIndex}-ingredient-name-and-measure` }
-              className={ validIngredient.checked ? 'line' : 'noline' }
-            >
-              { ` ${validIngredient.name}` }
-            </span>
-          ) }
-        </li>
-      )) }
-      { console.log(checkIngredient, 'checkIngredient') }
-      { console.log(count, 'count') }
-    </ul>
+    <IngredientsListItem
+      handleChange={ handleChange }
+      index={ index }
+      ingredientCheck={ ingredientCheck }
+      progress={ progress }
+      validIngredient={ validIngredient }
+    />
   );
 }
 

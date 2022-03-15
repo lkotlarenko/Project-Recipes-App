@@ -112,10 +112,10 @@
     @apply hidden absolute z-10 right-[1px] top-[-40px] w-24
   }
   .progress__line {
-    @apply line-through
+    @apply line-through decoration-black decoration-solid
   }
   .progress__noline {
-    @apply no-underline
+    @apply no-underline decoration-black decoration-solid
   }
 }
 
