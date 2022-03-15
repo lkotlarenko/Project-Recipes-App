@@ -5,6 +5,7 @@ import Footer from '../../components/Footer';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 import ContextApp from '../../context/ContextApp';
 import fetchAPI from '../../services/drinks&mealsAPI';
+import '../../index.css';
 
 function ExplorePage({ type }) {
   const history = useHistory();
@@ -39,6 +40,7 @@ function ExplorePage({ type }) {
     <button
       type="button"
       data-testid="explore-by-nationality"
+      className="button-style p-2 m-2"
       onClick={ () => (history.push('/explore/foods/nationalities')) }
     >
       By Nationality
@@ -48,22 +50,27 @@ function ExplorePage({ type }) {
   return (
     <div>
       <HeaderWithSearch name={ PAGE_TITLE } verifc={ false } />
-      <button
-        type="button"
-        data-testid="explore-by-ingredient"
-        onClick={ () => (history.push(`/explore/${type}/ingredients`)) }
-      >
-        By Ingredient
-      </button>
-      { showNationalities && NATIONALITIES_BUTTON }
-      <button
-        type="button"
-        data-testid="explore-surprise"
-        onClick={ handleSurpriseMe }
-      >
-        Surprise me!
-      </button>
-      <Footer />
+      <div className="flex flex-wrap py-2 justify-center items-center">
+        <button
+          type="button"
+          data-testid="explore-by-ingredient"
+          className="button-style p-2 m-2"
+          onClick={ () => (history.push(`/explore/${type}/ingredients`)) }
+        >
+          By Ingredient
+        </button>
+        { showNationalities && NATIONALITIES_BUTTON }
+        <button
+          type="button"
+          className="button-style p-2 m-2"
+          data-testid="explore-surprise"
+          onClick={ handleSurpriseMe }
+        >
+          Surprise me!
+        </button>
+        <Footer />
+      </div>
+
     </div>
   );
 }
