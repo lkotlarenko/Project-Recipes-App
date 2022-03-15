@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import ReactPlayer from 'react-player';
+// import ReactPlayer from 'react-player/youtube';
 import ContextApp from '../../context/ContextApp';
 import '../../index.css';
 import DetailsButton from '../DetailsButton';
@@ -20,6 +20,7 @@ function DetailsCard() {
   const term = (urlDrinks ? 'Drink' : 'Meal');
   const validIngredients = [];
   const ingredients = [];
+  const term2 = (urlDrinks ? 'cocktails' : 'meals');
 
   useEffect(() => {
     const chosenAPI = (urlDrinks ? 'drinks' : 'foods');
@@ -72,7 +73,7 @@ function DetailsCard() {
                   ingredients={ ingredients }
                   progress={ progress }
                   recipeId={ recipeId }
-                  urlDrinks={ urlDrinks }
+                  term2={ term2 }
                   validIngredient={ validIngredient }
                   validIngredients={ validIngredients }
                 />
@@ -82,7 +83,7 @@ function DetailsCard() {
             <p data-testid="instructions">{ detail.strInstructions }</p>
           </div>
           <div className="foods__video-div">
-            { !urlDrinks && <ReactPlayer
+            {/* { !urlDrinks && <ReactPlayer
               data-testid="video"
               url={ (detail.strYoutube) }
               className="foods__video"
@@ -91,7 +92,7 @@ function DetailsCard() {
                   playerVars: { origin: 'http://localhost:3000/', showinfo: 0 },
                 },
               } }
-            /> }
+            /> } */}
           </div>
           <RecommendationCard urlDrinks={ urlDrinks } />
           <DetailsButton

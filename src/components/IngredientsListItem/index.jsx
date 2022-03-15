@@ -12,21 +12,23 @@ function IngredientsListItem(props) {
 
   return (
     <li data-testid={ `${index}-ingredient-step` }>
-      { (progress) && (validIngredient && (
-        <input
-          type="checkbox"
-          id={ validIngredient }
-          name={ validIngredient }
-          checked={ ingredientCheck }
-          onChange={ (event) => handleChange(event) }
-        />)) }
       { validIngredient && (
-        <span
+        <label
           data-testid={ `${index}-ingredient-name-and-measure` }
           className={ ingredientCheck ? 'progress__line' : 'progress__noline' }
+          htmlFor={ `check-${index}` }
         >
-          { ` ${validIngredient}` }
-        </span>
+          { (progress) && (
+            <input
+              type="checkbox"
+              id={ `check-${index}` }
+              name={ validIngredient }
+              checked={ ingredientCheck }
+              className="progress__checkbox progress__noline"
+              onChange={ (event) => handleChange(event) }
+            />) }
+          { `${validIngredient}` }
+        </label>
       ) }
     </li>
   );
