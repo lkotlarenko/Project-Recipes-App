@@ -5,22 +5,18 @@ import ContextApp from '../../context/ContextApp';
 
 const onLoad = (term2, recipeId, validIngredient) => {
   const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  if (inProgressRecipes) {
-    const inProgress = inProgressRecipes[term2];
-    const values = inProgress[recipeId];
-    return (values.some((item) => item === validIngredient));
-    // setStorageValues(values);
-    // checkBtnDisabled();
-  }
+  const inProgress = inProgressRecipes && inProgressRecipes[term2];
+  const values = inProgress && inProgress[recipeId];
+  return (values && values.some((item) => item === validIngredient));
+  // setStorageValues(values);
+  // checkBtnDisabled();
 };
 
 const getStorageValues = (term2, recipeId) => {
   const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  if (inProgressRecipes) {
-    const inProgress = inProgressRecipes[term2];
-    const values = inProgress[recipeId];
-    return values;
-  }
+  const inProgress = inProgressRecipes && inProgressRecipes[term2];
+  const values = inProgress && inProgress[recipeId];
+  return values;
 };
 
 function IngredientsList({
