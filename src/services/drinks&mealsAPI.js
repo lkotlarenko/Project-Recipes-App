@@ -1,53 +1,16 @@
-const fetchAPI = async (chosenAPI = 'Foods', type, searchQuery = '') => {
-  let API_URL = '';
-  let BASE = 'ENDPOINT_URL';
-  const apiType = chosenAPI.toUpperCase();
-  switch (apiType) {
-  case 'DRINKS':
-    BASE = 'https://www.thecocktaildb.com/api/json/v1/1/'; break;
-  case 'FOODS':
-    BASE = 'https://www.themealdb.com/api/json/v1/1/'; break;
-  default: break;
+import apiHelper from './apiHelper';
+
+const fetchAPI = async (loadingHandler, chosenAPI = 'Foods', type, searchQuery = '') => {
+  loadingHandler(true);
+  const ENDPOINT = apiHelper(chosenAPI, type, searchQuery);
+  try {
+    const response = await fetch(ENDPOINT);
+    const data = response.json();
+    loadingHandler(false);
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
   }
-  switch (type) {
-  case 'ingredient': { // filter types
-    API_URL = `${BASE}filter.php?i=${searchQuery}`; break;
-  }
-  case 'firstLetter': {
-    API_URL = `${BASE}search.php?f=${searchQuery}`; break;
-  }
-  case 'name': {
-    API_URL = `${BASE}search.php?s=${searchQuery}`; break;
-  }
-  case 'all': { // other types
-    API_URL = `${BASE}search.php?s=`; break;
-  }
-  case 'categories': {
-    API_URL = `${BASE}list.php?c=list`; break;
-  }
-  case 'nationalities': {
-    API_URL = `${BASE}list.php?a=list`; break;
-  }
-  case 'filterCategory': {
-    API_URL = `${BASE}filter.php?c=${searchQuery}`; break;
-  }
-  case 'details': {
-    API_URL = `${BASE}lookup.php?i=${searchQuery}`; break;
-  }
-  case 'random': {
-    API_URL = `${BASE}random.php`; break;
-  }
-  case 'ingredientDetails': {
-    API_URL = `${BASE}lookup.php?iid=${searchQuery}`; break;
-  }
-  default: {
-    API_URL = `${BASE}list.php?i=list`; break;
-  }
-  }
-  return fetch(API_URL)
-    .then((response) => response.json())
-    .then((data) => data)
-    .catch((error) => `Error found: ${error}`);
 };
 
 export default fetchAPI;

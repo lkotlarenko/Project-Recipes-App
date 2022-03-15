@@ -37,6 +37,7 @@ function RecommendationCard(props) {
                       src={ thumb }
                       alt={ name }
                       data-testid={ `${index}-card-img` }
+                      className="rounded-lg"
                     />
                     <span
                       data-testid={ `${index}-recomendation-title` }

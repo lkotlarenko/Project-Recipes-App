@@ -6,6 +6,7 @@ import ContextApp from '../../context/ContextApp';
 import fetchAPI from '../../services/drinks&mealsAPI';
 
 function IngredientCard({ data, type, index }) {
+  const { setIsLoading } = useContext(ContextApp);
   const MEAL_IMG_SRC = `https://www.themealdb.com/images/ingredients/${data}-Small.png`;
   const DRINK_IMG_SRC = `https://www.thecocktaildb.com/images/ingredients/${data}-Small.png`;
   const { setDrinks, setFoods } = useContext(ContextApp);
@@ -13,29 +14,37 @@ function IngredientCard({ data, type, index }) {
 
   const handleRedirect = async () => {
     if (type === 'foods') {
-      const response = await fetchAPI(type, 'ingredient', data);
+      const response = await fetchAPI(setIsLoading, type, 'ingredient', data);
       setFoods(response.meals);
       history.push('/foods/');
     } else {
-      const response = await fetchAPI(type, 'ingredient', data);
+      const response = await fetchAPI(setIsLoading, type, 'ingredient', data);
       setDrinks(response.drinks);
       history.push('/drinks/');
     }
   };
 
   return (
-    <div data-testid={ `${index}-ingredient-card` }>
+    <div
+      data-testid={ `${index}-ingredient-card` }
+      className="card-effect"
+    >
       <button
         type="button"
         onClick={ handleRedirect }
       >
         <img
           src={ type === 'drinks' ? DRINK_IMG_SRC : MEAL_IMG_SRC }
-          className="h-36"
+          className="h-36 rounded-lg"
           alt={ data }
           data-testid={ `${index}-card-img` }
         />
-        <h2 data-testid={ `${index}-card-name` }>{data}</h2>
+        <h2
+          data-testid={ `${index}-card-name` }
+          className="w-36 text-base truncate"
+        >
+          {data}
+        </h2>
       </button>
     </div>
   );
