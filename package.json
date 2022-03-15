@@ -68,7 +68,7 @@
   },
   "jest": {
     "coveragePathIgnorePatterns": [
-      "index.js",
+      "src/index.js",
       "serviceWorker.js"
     ],
     "coverageReporters": [
