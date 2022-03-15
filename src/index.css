@@ -128,9 +128,26 @@
   .card-effect {
     @apply transform transition duration-300 hover:scale-110;
   }
+  /* .progress__line {
+    @apply line-through decoration-black decoration-solid
+  }
+  .progress__noline {
+    @apply no-underline decoration-black decoration-solid
+  } */
 }
 
 /* ! classes non tailwind */
+.progress__line {
+  text-decoration: line-through solid rgb(0, 0, 0);
+}
+.progress__noline {
+  text-decoration: none solid rgb(0, 0, 0);
+}
+
+.progress__checkbox {
+  margin-right: 8px;
+}
+
 .food__all {
   margin: 10px;
   width: 150px;

@@ -1,22 +1,26 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import ReactPlayer from 'react-player';
+import ReactPlayer from 'react-player/youtube';
 import ContextApp from '../../context/ContextApp';
-import { ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT,
-  NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN } from '../../helpers/constants';
 import '../../index.css';
 import DetailsButton from '../DetailsButton';
 import RecommendationCard from '../RecommendationCard';
 import FavShareButtons from '../FavShareButtons';
+import IngredientsList from '../IngredientsList';
+import { ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT,
+  NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN } from '../../helpers/constants';
 
-function DrinkDetailCard() {
+function DetailsCard() {
   const { details, handleDetails, progress, setProgress } = useContext(ContextApp);
   const ingredientIndex = [ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT,
     NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN];
   const { recipeId } = useParams();
   const urlDrinks = window.location.pathname.includes('drinks');
   const term = (urlDrinks ? 'Drink' : 'Meal');
+  const validIngredients = [];
+  const ingredients = [];
+  const term2 = (urlDrinks ? 'cocktails' : 'meals');
 
   useEffect(() => {
     const chosenAPI = (urlDrinks ? 'drinks' : 'foods');
@@ -52,24 +56,28 @@ function DrinkDetailCard() {
           <div className="details__body">
             <div className="details__h1">Ingredients:</div>
             <ul className="details__list">
-              { ingredientIndex.map((currentIndex, keyIndex) => {
-                const ingredient = detail[`strIngredient${currentIndex}`];
-                const measure = detail[`strMeasure${currentIndex}`];
-                return (
-                  keyIndex !== null
-                  && (
-                    <li key={ keyIndex } data-testid={ `${index}-ingredient-step` }>
-                      { (progress) && (ingredient && <input type="checkbox" />) }
-                      { ingredient && (
-                        <span
-                          data-testid={ `${keyIndex}-ingredient-name-and-measure` }
-                        >
-                          {` ${ingredient} - ${measure}`}
-                        </span>
-                      ) }
-                    </li>
-                  ));
-              })}
+              { ingredientIndex.forEach((keyIndex) => {
+                const ingredient = detail && detail[`strIngredient${keyIndex}`];
+                const measure = detail && detail[`strMeasure${keyIndex}`];
+                if (ingredient) {
+                  validIngredients.push(`${ingredient} - ${measure}`);
+                }
+                return validIngredients;
+              }) }
+              { (validIngredients)
+              && validIngredients.map((validIngredient, validIndex) => (
+                <IngredientsList
+                  key={ validIndex }
+                  detail={ detail }
+                  index={ validIndex }
+                  ingredients={ ingredients }
+                  progress={ progress }
+                  recipeId={ recipeId }
+                  term2={ term2 }
+                  validIngredient={ validIngredient }
+                  validIngredients={ validIngredients }
+                />
+              ))}
             </ul>
             <div className="details__h1">Instructions:</div>
             <p data-testid="instructions">{ detail.strInstructions }</p>
@@ -77,8 +85,13 @@ function DrinkDetailCard() {
           <div className="foods__video-div">
             { !urlDrinks && <ReactPlayer
               data-testid="video"
-              url={ detail.strYoutube }
+              url={ (detail.strYoutube) }
               className="foods__video"
+              config={ {
+                youtube: {
+                  playerVars: { origin: 'http://localhost:3000/', showinfo: 0 },
+                },
+              } }
             /> }
           </div>
           <RecommendationCard urlDrinks={ urlDrinks } />
@@ -94,9 +107,9 @@ function DrinkDetailCard() {
   );
 }
 
-DrinkDetailCard.propTypes = {
+DetailsCard.propTypes = {
   history: PropTypes.instanceOf(Object),
   match: PropTypes.instanceOf(Object),
 }.isRequired;
 
-export default DrinkDetailCard;
+export default DetailsCard;

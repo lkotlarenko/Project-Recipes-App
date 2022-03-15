@@ -5,6 +5,7 @@ import shareBtn from '../../images/shareIcon.svg';
 import whiteFavBtn from '../../images/whiteHeartIcon.svg';
 import blackFavBtn from '../../images/blackHeartIcon.svg';
 import { TOOLTIP_TIMER, RANGE } from '../../helpers/constants';
+import { handleUrl } from './helper';
 
 function FavShareButtons(props) {
   const { details } = useContext(ContextApp);
@@ -41,11 +42,10 @@ function FavShareButtons(props) {
   const handleShare = () => {
     const urlElement = document.createElement('input');
     const link = document.querySelector('#shareBtnMsg');
-    urlElement.value = window.location.href;
     urlElement.focus();
     urlElement.select();
     urlElement.setSelectionRange(0, RANGE); /* For mobile devices */
-    navigator.clipboard.writeText(urlElement.value);
+    navigator.clipboard.writeText(handleUrl());
     link.style.display = 'block';
     setTimeout(() => { link.style.display = 'none'; }, TOOLTIP_TIMER);
   };

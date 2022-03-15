@@ -16,6 +16,7 @@ function ProviderApp({ children }) {
   const [foodCategories, setFoodCategories] = useState([]);
   const [foods, setFoods] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+  const [isBtnFinishDisabled, setIsBtnFinishDisabled] = useState(true);
   const [isDisabled, setIsDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [lastDrinkCategory, setLastDrinkCategory] = useState('');
@@ -89,6 +90,7 @@ function ProviderApp({ children }) {
     foods,
     ingredients,
     isDisabled,
+    isBtnFinishDisabled,
     isLoading,
     lastDrinkCategory,
     lastFoodCategory,
@@ -109,6 +111,7 @@ function ProviderApp({ children }) {
     setFilterDrinkCategory,
     setFilterFoodCategory,
     setFoods,
+    setIsBtnFinishDisabled,
     setIsDisabled,
     setIsLoading,
     setLastDrinkCategory,
