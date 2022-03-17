@@ -27,24 +27,24 @@ function IngredientCard({ data, type, index }) {
   return (
     <div
       data-testid={ `${index}-ingredient-card` }
-      className="card-effect"
+      className="card-effect button-effect"
     >
       <button
         type="button"
         onClick={ handleRedirect }
       >
-        <img
-          src={ type === 'drinks' ? DRINK_IMG_SRC : MEAL_IMG_SRC }
-          className="h-36 rounded-lg"
-          alt={ data }
-          data-testid={ `${index}-card-img` }
-        />
         <h2
           data-testid={ `${index}-card-name` }
           className="w-36 text-base truncate"
         >
           {data}
         </h2>
+        <img
+          src={ type === 'drinks' ? DRINK_IMG_SRC : MEAL_IMG_SRC }
+          className="h-36 rounded-lg"
+          alt={ data }
+          data-testid={ `${index}-card-img` }
+        />
       </button>
     </div>
   );

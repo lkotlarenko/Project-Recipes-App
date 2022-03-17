@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player/youtube';
 import ContextApp from '../../context/ContextApp';
-import '../../index.css';
 import DetailsButton from '../DetailsButton';
 import RecommendationCard from '../RecommendationCard';
 import FavShareButtons from '../FavShareButtons';
 import IngredientsList from '../IngredientsList';
+import '../../index.css';
 import { ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT,
   NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN } from '../../helpers/constants';
 

@@ -17,7 +17,7 @@ function MainRecipes({ pageType }) {
     <div>
       <HeaderWithSearch name={ PAGE_TYPE } verifc="search" />
       <CategoriesList type={ PAGE_TYPE } />
-      <div className="drink__board flex p-2 flex-wrap justify-evenly mb-12">
+      <div className="flex p-2 flex-wrap justify-evenly mb-12">
         { isLoading ? <Loading /> : <RecipesBoard type={ PAGE_TYPE } /> }
       </div>
       <Footer />

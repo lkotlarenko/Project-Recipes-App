@@ -15,7 +15,7 @@ function IngredientsListItem(props) {
       { validIngredient && (
         <label
           data-testid={ `${index}-ingredient-name-and-measure` }
-          className={ ingredientCheck ? 'progress__line' : 'progress__noline' }
+          className={ ingredientCheck ? 'progress__line' : 'progress__no-line' }
           htmlFor={ `check-${index}` }
         >
           { (progress) && (
@@ -24,7 +24,7 @@ function IngredientsListItem(props) {
               id={ `check-${index}` }
               name={ validIngredient }
               checked={ ingredientCheck }
-              className="progress__checkbox progress__noline"
+              className="mr-8 progress__no-line"
               onChange={ (event) => handleChange(event) }
             />) }
           { `${validIngredient}` }

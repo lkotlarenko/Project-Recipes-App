@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Loading() {
   return (
-    <Spinner animation="border" variant="primary" />
+    <Spinner animation="border" variant="danger" />
   );
 }
 

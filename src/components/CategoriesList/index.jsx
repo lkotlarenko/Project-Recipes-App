@@ -55,7 +55,7 @@ function CategoriesList({ type }) {
     <section className="flex flex-wrap py-2 justify-center items-center">
       <button
         type="button"
-        className="tag-style"
+        className="tag-style button-effect"
         onClick={ () => {
           handleTagClick('all');
         } }
@@ -67,7 +67,7 @@ function CategoriesList({ type }) {
         <button
           type="button"
           key={ index }
-          className="tag-style"
+          className="tag-style button-effect"
           onClick={ () => {
             handleTagClick(strCategory);
           } }
