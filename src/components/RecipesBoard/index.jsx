@@ -53,7 +53,7 @@ function RecipeBoard({ type }) {
             >
               <div
                 data-testid={ `${index}-recipe-card` }
-                className="food__all card-effect"
+                className="container__m-w card-effect"
               >
                 <h4
                   data-testid={ `${index}-card-name` }

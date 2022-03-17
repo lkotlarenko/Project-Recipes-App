@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 import Footer from '../../components/Footer';
+import '../../index.css';
 
 function Profile({ history }) {
   const userEmail = JSON.parse(localStorage.getItem('user'));
@@ -16,16 +17,14 @@ function Profile({ history }) {
           <div className="flex flex-col md:flex-row">
             <button
               type="button"
-              className="bg-blue-500 hover:bg-blue-700 text-white
-                font-bold py-2 px-4 m-3 rounded md:w-1/3"
+              className="button-style"
               data-testid="profile-done-btn"
               onClick={ () => history.push('/done-recipes') }
             >
               Done Recipes
             </button>
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white
-                font-bold py-2 px-4 m-3 rounded md:w-1/3"
+              className="button-style"
               type="button"
               data-testid="profile-favorite-btn"
               onClick={ () => history.push('/favorite-recipes') }
@@ -33,8 +32,7 @@ function Profile({ history }) {
               Favorite Recipes
             </button>
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white
-                font-bold py-2 px-4 m-3 rounded md:w-1/3"
+              className="button-style"
               type="button"
               data-testid="profile-logout-btn"
               onClick={ () => {

@@ -129,7 +129,7 @@ function HeaderWithSearch({ name, verifc }) {
   );
   return (
     <div>
-      <div className="flex justify-between bg-slate-300">
+      <div className="flex p-2 justify-between color-primary">
         <button
           type="button"
           src={ ProfileButton }
@@ -140,10 +140,10 @@ function HeaderWithSearch({ name, verifc }) {
             type="image"
             src={ ProfileButton }
             alt={ name }
-            className="transform transition duration-300 hover:scale-110"
+            className="button-effect invert"
           />
         </button>
-        <h2 className="text-2xl" data-testid="page-title">
+        <h2 className="text-2xl text-white font-bold" data-testid="page-title">
           {name}
         </h2>
         {verifc && (
@@ -153,7 +153,12 @@ function HeaderWithSearch({ name, verifc }) {
             src={ SearchButton }
             onClick={ changeButtonSearch }
           >
-            <input type="image" src={ SearchButton } alt={ name } />
+            <input
+              type="image"
+              src={ SearchButton }
+              alt={ name }
+              className="button-effect invert"
+            />
           </button>
         )}
       </div>

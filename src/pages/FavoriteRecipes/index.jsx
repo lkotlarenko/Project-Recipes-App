@@ -43,7 +43,7 @@ function FoodRecipes() {
   return (
     <div>
       <HeaderWithSearch name="Favorite Recipes" verifc={ false } />
-      <div className="flex flex-wrap py-2">
+      <div className="flex flex-wrap py-2 justify-center items-center">
         <button
           type="button"
           className="tag-style"
@@ -69,46 +69,50 @@ function FoodRecipes() {
           Drinks
         </button>
       </div>
-      <div className="food__all flex p-2 flex-wrap justify-evenly">
-        { favorite && favorite.filter(filterButtom).map((e, index) => (
-          <div key={ e.id } className="card-effect">
-            <Link to={ `/${e.type}s/${e.id}` }>
-              <h3 data-testid={ `${index}-horizontal-name` }>{e.name}</h3>
-            </Link>
-            <h3 data-testid={ `${index}-horizontal-top-text` }>
-              { e.type === 'foods' || e.type === 'food' ? ` ${e.nationality} - 
+      <section className="flex flex-wrap py-2 justify-center items-center">
+        <div className="max-w-[150px]">
+          { favorite && favorite.filter(filterButtom).map((e, index) => (
+            <div key={ e.id } className="py-2">
+              <div className="card-effect">
+                <Link to={ `/${e.type}s/${e.id}` }>
+                  <h3 data-testid={ `${index}-horizontal-name` }>{e.name}</h3>
+                </Link>
+                <h3 data-testid={ `${index}-horizontal-top-text` }>
+                  { e.type === 'foods' || e.type === 'food' ? ` ${e.nationality} - 
               ${e.category}` : e.alcoholicOrNot}
-            </h3>
-            <Link to={ `/${e.type}s/${e.id}` }>
-              <img
-                src={ e.image }
-                alt={ e.name }
-                data-testid={ `${index}-horizontal-image` }
-                className="rounded-lg"
-              />
-            </Link>
-            <div className="favShareBtn">
-              <div id="shareBtnMsg" className="shareBtnMsg">Link copied!</div>
-              <button type="button" onClick={ () => removeFavorite(e.id) }>
-                <img
-                  src={ blackFavBtn }
-                  alt="Favorite"
-                  data-testid={ `${index}-horizontal-favorite-btn` }
-                  className="favBtn"
-                />
-              </button>
-              <button type="button" onClick={ () => handleShare(e.type, e.id) }>
-                <img
-                  src={ shareBtn }
-                  alt="Share"
-                  data-testid={ `${index}-horizontal-share-btn` }
-                  className="shareBtn"
-                />
-              </button>
+                </h3>
+                <Link to={ `/${e.type}s/${e.id}` }>
+                  <img
+                    src={ e.image }
+                    alt={ e.name }
+                    data-testid={ `${index}-horizontal-image` }
+                    className="rounded-lg"
+                  />
+                </Link>
+                <div className="favShareBtn">
+                  <div id="shareBtnMsg" className="shareBtnMsg">Link copied!</div>
+                  <button type="button" onClick={ () => removeFavorite(e.id) }>
+                    <img
+                      src={ blackFavBtn }
+                      alt="Favorite"
+                      data-testid={ `${index}-horizontal-favorite-btn` }
+                      className="favBtn"
+                    />
+                  </button>
+                  <button type="button" onClick={ () => handleShare(e.type, e.id) }>
+                    <img
+                      src={ shareBtn }
+                      alt="Share"
+                      data-testid={ `${index}-horizontal-share-btn` }
+                      className="shareBtn"
+                    />
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

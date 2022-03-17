@@ -25,7 +25,9 @@ export default function Login() {
   }, [email, password, setIsDisabled]);
 
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+    <div
+      className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col h-screen"
+    >
       <div className="mb-4">
         <label
           className="block text-grey-darker text-sm font-bold mb-2"
@@ -36,7 +38,7 @@ export default function Login() {
             className="shadow appearance-none border rounded w-full py-2
               px-3 text-grey-darker"
             id="email"
-            type="text"
+            type="email"
             placeholder="user@email.com"
             data-testid="email-input"
             onChange={ ({ target }) => setEmail(target.value) }
@@ -62,10 +64,10 @@ export default function Login() {
       </div>
       <button
         className={
-          isDisabled ? `shadow bg-purple-300 cursor-not-allowed hover:bg-purple-400
+          isDisabled ? `shadow bg-[#8f8500] cursor-not-allowed hover:bg-[#ccbe00]
             focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4
             rounded`
-            : `shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline
+            : `shadow bg-[#ccbe00] hover:bg-[#8f8500] focus:shadow-outline
               focus:outline-none text-white font-bold py-2 px-4 rounded`
         }
         type="button"

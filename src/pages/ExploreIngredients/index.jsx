@@ -28,7 +28,7 @@ function ExploreIngredients({ type }) {
   return (
     <div>
       <HeaderWithSearch name={ PAGE_TITLE } verifc={ false } />
-      <section className="flex p-6 flex-wrap justify-between">
+      <section className="flex p-6 flex-wrap justify-between mb-12">
         {ingredients
           && ingredients
             .slice(0, TWELVE)
