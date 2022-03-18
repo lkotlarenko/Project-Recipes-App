@@ -35,13 +35,13 @@ export default function Login() {
         <div>
           <img src={ logo } alt="Logo" />
           <label
-            className="block text-grey-darker text-sm font-bold mb-2 text-white z-10"
+            className="block text-sm font-bold mb-2 text-white z-10"
             htmlFor="username"
           >
             Email
             <input
               className="shadow appearance-none border rounded w-full py-2
-                px-3 text-grey-darker z-10 opacity-100"
+                px-3 text-black z-10 opacity-100"
               id="email"
               type="email"
               placeholder="user@email.com"
@@ -50,13 +50,13 @@ export default function Login() {
             />
           </label>
           <label
-            className="block text-grey-darker text-sm font-bold mb-2 text-white z-10"
+            className="block text-sm font-bold mb-2 text-white z-10"
             htmlFor="password"
           >
             Senha
             <input
               className="shadow appearance-none border border-red rounded
-                w-full py-2 px-3 text-grey-darker mb-3 z-10"
+                w-full py-2 px-3 text-black mb-3 z-10"
               id="password"
               type="password"
               placeholder="******"

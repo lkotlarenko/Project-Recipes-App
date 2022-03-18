@@ -80,13 +80,13 @@
     @apply carousel-control-next-icon inline-block bg-no-repeat;
   }
   .recommended {
-    @apply m-5 mb-8 max-w-full overflow-hidden;
+    @apply m-5 mb-16 max-w-full overflow-hidden;
   }
   .recommended__frame {
-    @apply flex m-5 overflow-x-scroll;
+    @apply flex m-1 overflow-x-scroll;
   }
   .recommended__card {
-    @apply min-w-[45vw] p-5;
+    @apply min-w-[45vw] p-5 md:min-w-[25vw] lg:min-w-[18vw];
   }
   .recommended__title {
     @apply text-2xl;
