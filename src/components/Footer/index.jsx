@@ -9,7 +9,7 @@ function Footer() {
   return (
     <footer
       className="w-screen flex flex-wrap justify-around
-      mx-auto lg:justify-between fixed bottom-0 color-primary p-2"
+      mx-auto lg:justify-between fixed bottom-0 color-primary p-2 left-0"
       data-testid="footer"
     >
       <Link to="/drinks">

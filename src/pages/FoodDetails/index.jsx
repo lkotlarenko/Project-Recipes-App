@@ -3,7 +3,7 @@ import DetailsCard from '../../components/DetailsCard';
 
 function FoodDetails() {
   return (
-    <div>
+    <div className="bgwhite">
       <DetailsCard />
     </div>
   );

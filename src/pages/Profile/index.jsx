@@ -7,24 +7,24 @@ import '../../index.css';
 function Profile({ history }) {
   const userEmail = JSON.parse(localStorage.getItem('user'));
   return (
-    <div>
+    <div className="bgcenter">
       <HeaderWithSearch name="Profile" verific={ false } />
       {userEmail && (
-        <div className="w-11/12 h-screen mx-auto py-10 px-5 flex flex-col">
-          <p data-testid="profile-email" className="m-3">
+        <div>
+          <p data-testid="profile-email" className="m-3 text-xl text-center font-bold">
             {`Email: ${userEmail.email}`}
           </p>
-          <div className="flex flex-col md:flex-row">
+          <div className="flex flex-col md:flex-row w-[90vw] justify-evenly">
             <button
               type="button"
-              className="button-style"
+              className="button-style py-[20px] text-xl"
               data-testid="profile-done-btn"
               onClick={ () => history.push('/done-recipes') }
             >
               Done Recipes
             </button>
             <button
-              className="button-style"
+              className="button-style py-[20px] text-xl"
               type="button"
               data-testid="profile-favorite-btn"
               onClick={ () => history.push('/favorite-recipes') }
@@ -32,7 +32,7 @@ function Profile({ history }) {
               Favorite Recipes
             </button>
             <button
-              className="button-style"
+              className="button-style py-[20px] text-xl"
               type="button"
               data-testid="profile-logout-btn"
               onClick={ () => {

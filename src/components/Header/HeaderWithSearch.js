@@ -70,8 +70,8 @@ function HeaderWithSearch({ name, verifc }) {
 
   const SEARCH_FEATURES = (
     <section
-      className="section-style lg:pb-45 sm:pb-4 md:max-h-10 sm:text-md
-      lg:text-sm md:pb-32"
+      className="section-style sm:text-md
+      lg:text-sm mt-[-15px] w-screen max-h-44"
     >
       <input
         onChange={ (e) => changeSearchName(e.target.value) }
@@ -121,7 +121,7 @@ function HeaderWithSearch({ name, verifc }) {
         type="button"
         onClick={ doSearch }
         data-testid="exec-search-btn"
-        className="button-style"
+        className="button-style max-w-[150px]"
       >
         Search
       </button>
@@ -129,7 +129,10 @@ function HeaderWithSearch({ name, verifc }) {
   );
   return (
     <div>
-      <div className="flex p-2 justify-between color-primary">
+      <div
+        className="flex p-2 justify-between color-primary lg:pb-45 sm:pb-4
+          max-h-13 sm:text-md lg:text-sm md:pb-32 fixed z-10 top-0 left-0 w-screen"
+      >
         <button
           type="button"
           src={ ProfileButton }
@@ -140,7 +143,7 @@ function HeaderWithSearch({ name, verifc }) {
             type="image"
             src={ ProfileButton }
             alt={ name }
-            className="button-effect invert"
+            className="button-effect invert pl-1"
           />
         </button>
         <h2 className="text-2xl text-white font-bold" data-testid="page-title">
@@ -157,7 +160,7 @@ function HeaderWithSearch({ name, verifc }) {
               type="image"
               src={ SearchButton }
               alt={ name }
-              className="button-effect invert"
+              className="button-effect invert pr-3"
             />
           </button>
         )}

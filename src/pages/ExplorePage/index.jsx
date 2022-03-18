@@ -40,7 +40,7 @@ function ExplorePage({ type }) {
     <button
       type="button"
       data-testid="explore-by-nationality"
-      className="button-style p-2 m-2"
+      className="button-style py-[20px] text-xl"
       onClick={ () => (history.push('/explore/foods/nationalities')) }
     >
       By Nationality
@@ -48,13 +48,13 @@ function ExplorePage({ type }) {
   );
 
   return (
-    <div>
+    <div className="bgcenter">
       <HeaderWithSearch name={ PAGE_TITLE } verifc={ false } />
-      <div className="flex flex-wrap py-2 justify-center items-center">
+      <div className="flex flex-col md:flex-row w-[90vw] justify-evenly">
         <button
           type="button"
           data-testid="explore-by-ingredient"
-          className="button-style p-2 m-2"
+          className="button-style py-[20px] text-xl"
           onClick={ () => (history.push(`/explore/${type}/ingredients`)) }
         >
           By Ingredient
@@ -62,7 +62,7 @@ function ExplorePage({ type }) {
         { showNationalities && NATIONALITIES_BUTTON }
         <button
           type="button"
-          className="button-style p-2 m-2"
+          className="button-style py-[20px] text-xl"
           data-testid="explore-surprise"
           onClick={ handleSurpriseMe }
         >

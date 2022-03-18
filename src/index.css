@@ -128,6 +128,12 @@
   .button-effect {
     @apply transform transition duration-300 hover:scale-110 active:scale-90;
   }
+  .bgcenter {
+    @apply h-screen w-screen flex flex-col py-[57px] justify-center items-center;
+  }
+  .bgtop {
+    @apply h-screen w-screen flex flex-col py-[57px] justify-start items-center;
+  }
 }
 
 /* * custom colors */
@@ -160,7 +166,13 @@
   width: 150px;
 }
 
+.bgimage {
+  background: url('./images/img011.jpg') center no-repeat;
+  background-size: cover;
+}
+
 body {
+  overflow-x: hidden;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
