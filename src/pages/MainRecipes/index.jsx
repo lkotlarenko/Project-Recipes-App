@@ -14,7 +14,7 @@ function MainRecipes({ pageType }) {
   const { isLoading } = useContext(ContextApp);
 
   return (
-    <div>
+    <div className="bgtop">
       <HeaderWithSearch name={ PAGE_TYPE } verifc="search" />
       <CategoriesList type={ PAGE_TYPE } />
       <div className="flex p-2 flex-wrap justify-evenly mb-12">

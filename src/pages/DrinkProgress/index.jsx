@@ -4,7 +4,7 @@ import DetailsCard from '../../components/DetailsCard';
 
 function DrinkProgress() {
   return (
-    <div>
+    <div className="bgwhite">
       <DetailsCard />
     </div>
   );

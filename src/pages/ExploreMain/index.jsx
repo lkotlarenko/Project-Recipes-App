@@ -1,22 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import HeaderWithSearch from '../../components/Header/HeaderWithSearch';
 import '../../index.css';
 
 function ExploreMain() {
+  const history = useHistory();
+
   return (
-    <div>
+    <div className="bgcenter">
       <HeaderWithSearch name="Explore" verifc={ false } />
-      <div className="flex flex-wrap py-2 justify-center items-center p-2">
-        <Link to="/explore/foods" className="button-style button-effect p-2 m-2">
-          <h3 data-testid="explore-foods">Explore Foods</h3>
-        </Link>
-        <Link to="/explore/drinks" className="button-style button-effect p-2 m-2">
-          <h3 data-testid="explore-drinks">Explore Drinks</h3>
-        </Link>
-        <Footer />
+      <div
+        className="flex flex-col md:flex-row w-[90vw] justify-evenly"
+      >
+        <button
+          type="button"
+          className="button-style py-[20px] text-xl"
+          data-testid="explore-foods"
+          onClick={ () => history.push('/explore/foods') }
+        >
+          Explore Foods
+        </button>
+        <button
+          type="button"
+          className="button-style py-[20px] text-xl"
+          data-testid="explore-drinks"
+          onClick={ () => history.push('/explore/drinks') }
+        >
+          Explore Drinks
+        </button>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -26,7 +26,7 @@ function ExploreIngredients({ type }) {
   }, []);
 
   return (
-    <div>
+    <div className="bgwhite">
       <HeaderWithSearch name={ PAGE_TITLE } verifc={ false } />
       <section className="flex p-6 flex-wrap justify-between mb-12">
         {ingredients

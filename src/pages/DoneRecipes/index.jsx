@@ -34,7 +34,7 @@ function DoneRecipes() {
   };
 
   return (
-    <div>
+    <div className="bgcenter">
       <HeaderWithSearch name="Done Recipes" verifc={ false } />
       <div className="flex flex-wrap py-2 justify-center items-center">
         <button

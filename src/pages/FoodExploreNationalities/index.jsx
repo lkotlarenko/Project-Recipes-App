@@ -51,7 +51,7 @@ function FoodExploreNationality() {
   };
 
   return (
-    <div>
+    <div className="bgtop">
       <HeaderWithSearch name="Explore Nationalities" verifc="search" />
       <section className="flex flex-col justify-center items-center py-4 capitalize">
         <select

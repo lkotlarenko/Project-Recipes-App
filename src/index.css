@@ -80,13 +80,13 @@
     @apply carousel-control-next-icon inline-block bg-no-repeat;
   }
   .recommended {
-    @apply m-5 mb-8 max-w-full overflow-hidden;
+    @apply m-5 mb-16 max-w-full overflow-hidden;
   }
   .recommended__frame {
-    @apply flex m-5 overflow-x-scroll;
+    @apply flex m-1 overflow-x-scroll;
   }
   .recommended__card {
-    @apply min-w-[45vw] p-5;
+    @apply min-w-[45vw] p-5 md:min-w-[25vw] lg:min-w-[18vw];
   }
   .recommended__title {
     @apply text-2xl;
@@ -128,6 +128,22 @@
   .button-effect {
     @apply transform transition duration-300 hover:scale-110 active:scale-90;
   }
+  .bgcenter {
+    @apply h-screen w-screen flex flex-col py-[57px] justify-center items-center;
+  }
+  .bgtop {
+    @apply h-screen w-screen flex flex-col py-[57px] justify-start items-center;
+  }
+  .notFound {
+    @apply relative bg-blue-500 w-screen flex items-center justify-center;
+  }
+  .notFoundImage {
+    @apply absolute max-w-[100vw] max-h-[100vh] w-[830px];
+  }
+  .notFoundText {
+    @apply absolute max-w-[100vw] max-h-[100vh] w-[830px] top-[50px] sm:top-[100px] md:top-[140px]
+    text-center m-auto text-xl sm:text-3xl md:text-4xl font-extrabold;
+  }
 }
 
 /* * custom colors */
@@ -160,7 +176,13 @@
   width: 150px;
 }
 
+.bgimage {
+  background: url('./images/img011.jpg') center no-repeat;
+  background-size: cover;
+}
+
 body {
+  overflow-x: hidden;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
