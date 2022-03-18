@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import ProfileButton from '../../images/profileIcon.svg';
@@ -19,12 +19,17 @@ function HeaderWithSearch({ name, verifc }) {
     setFoods,
     setIsLoading,
     setRadioFilter,
+    setSearchButton,
   } = useContext(ContextApp);
 
   const history = useHistory();
   const onClickButton = () => {
     history.push('/profile');
   };
+
+  useEffect(() => {
+    setSearchButton(false);
+  }, [history, setSearchButton]);
 
   const handleSearch = async (searchFilter, searchQuery) => {
     if (name === 'Foods') {

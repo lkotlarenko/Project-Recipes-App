@@ -6,7 +6,7 @@ import '../../index.css';
 
 function ExploreMain() {
   const history = useHistory();
-
+  document.title = 'Explore';
   return (
     <div className="bgcenter">
       <HeaderWithSearch name="Explore" verifc={ false } />

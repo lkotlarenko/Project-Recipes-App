@@ -25,6 +25,7 @@ function RecipeBoard({ type }) {
       setCardThumb('strDrinkThumb');
       setCardId('idDrink');
       setCardInfo(drinks);
+      document.title = 'Drinks';
       break;
 
     case 'FOODS':
@@ -32,6 +33,7 @@ function RecipeBoard({ type }) {
       setCardThumb('strMealThumb');
       setCardId('idMeal');
       setCardInfo(foods);
+      document.title = 'Foods';
       break;
     default:
       throw new Error(`pass a valid type as prop ${PAGE_TYPE}`);

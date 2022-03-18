@@ -27,7 +27,7 @@ function IngredientCard({ data, type, index }) {
   return (
     <div
       data-testid={ `${index}-ingredient-card` }
-      className="card-effect button-effect"
+      className="card-effect button-effect mb-8"
     >
       <button
         type="button"

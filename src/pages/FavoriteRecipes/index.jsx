@@ -6,6 +6,7 @@ import blackFavBtn from '../../images/blackHeartIcon.svg';
 import { TOOLTIP_TIMER, RANGE } from '../../helpers/constants';
 
 function FoodRecipes() {
+  document.title = 'Favorite Recipes';
   const [favorite, setFavorite] = useState([]);
   const [buttomfavorite, setbuttomfavorite] = useState('all');
   useEffect(() => {

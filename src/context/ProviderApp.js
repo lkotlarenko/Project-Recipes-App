@@ -121,6 +121,7 @@ function ProviderApp({ children }) {
     setProgress,
     setRadioFilter,
     setRecipeDetails,
+    setSearchButton,
   };
 
   return (
