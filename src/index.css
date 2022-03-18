@@ -129,10 +129,10 @@
     @apply transform transition duration-300 hover:scale-110 active:scale-90;
   }
   .bgcenter {
-    @apply h-screen w-screen flex flex-col py-[57px] justify-center items-center;
+    @apply h-screen w-screen flex flex-col py-[65px] justify-center items-center;
   }
   .bgtop {
-    @apply h-screen w-screen flex flex-col py-[57px] justify-start items-center;
+    @apply h-screen w-screen flex flex-col py-[65px] justify-start items-center;
   }
   .notFound {
     @apply relative bg-blue-500 w-screen flex items-center justify-center;
