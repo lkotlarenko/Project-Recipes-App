@@ -41,9 +41,9 @@ function FoodRecipes() {
   };
 
   return (
-    <div>
+    <div className="bgtop">
       <HeaderWithSearch name="Favorite Recipes" verifc={ false } />
-      <div className="flex flex-wrap py-2 justify-center items-center">
+      <div className="flex flex-wrap py-2 justify-center items-center z-10">
         <button
           type="button"
           className="tag-style"
