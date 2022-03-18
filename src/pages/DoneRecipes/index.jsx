@@ -5,6 +5,7 @@ import shareBtn from '../../images/shareIcon.svg';
 import { TOOLTIP_TIMER, RANGE } from '../../helpers/constants';
 
 function DoneRecipes() {
+  document.title = 'Done Recipes';
   const [favorite, setFavorite] = useState([]);
   const [buttomfavorite, setbuttomfavorite] = useState('all');
   useEffect(() => {

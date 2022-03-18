@@ -36,7 +36,7 @@ function ExploreIngredients({ type }) {
               const { [INGREDIENT_KEY]: ingredientData } = ingredient;
               return (
                 <IngredientCard
-                  key={ ingredientData }
+                  key={ `${ingredientData}${index}` }
                   data={ ingredientData }
                   type={ type }
                   index={ index }

@@ -6,6 +6,7 @@ import '../../index.css';
 
 function Profile({ history }) {
   const userEmail = JSON.parse(localStorage.getItem('user'));
+  document.title = 'Profile';
   return (
     <div className="bgcenter">
       <HeaderWithSearch name="Profile" verific={ false } />
@@ -37,6 +38,7 @@ function Profile({ history }) {
               data-testid="profile-logout-btn"
               onClick={ () => {
                 localStorage.clear();
+                document.title = 'Delicious Recipes';
                 history.push('/');
               } }
             >

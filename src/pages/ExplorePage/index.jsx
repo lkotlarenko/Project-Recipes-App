@@ -28,9 +28,11 @@ function ExplorePage({ type }) {
     if (type === 'drinks') {
       setPageTitle('Explore Drinks');
       setshowNationalities(false);
+      document.title = 'Explore Drinks';
     } else {
       setPageTitle('Explore Foods');
       setshowNationalities(true);
+      document.title = 'Explore Foods';
     }
     // essa linha precisa do [] vazio para executar apenas quando montado e evitar loop
   // eslint-disable-next-line react-hooks/exhaustive-deps
