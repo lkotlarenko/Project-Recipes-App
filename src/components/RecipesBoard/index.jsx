@@ -39,7 +39,7 @@ function RecipeBoard({ type }) {
   }, [drinks, foods, type]);
 
   return (
-    <div>
+    <div className="mb-[70px] flex flex-wrap justify-evenly md:justify-start">
       { cardInfo && cardInfo
         .slice(0, TWELVE)
         .map((card, index) => {
