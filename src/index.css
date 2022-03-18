@@ -134,6 +134,16 @@
   .bgtop {
     @apply h-screen w-screen flex flex-col py-[57px] justify-start items-center;
   }
+  .notFound {
+    @apply relative bg-blue-500 w-screen flex items-center justify-center;
+  }
+  .notFoundImage {
+    @apply absolute max-w-[100vw] max-h-[100vh] w-[830px];
+  }
+  .notFoundText {
+    @apply absolute max-w-[100vw] max-h-[100vh] w-[830px] top-[50px] sm:top-[100px] md:top-[140px]
+    text-center m-auto text-xl sm:text-3xl md:text-4xl font-extrabold;
+  }
 }
 
 /* * custom colors */
