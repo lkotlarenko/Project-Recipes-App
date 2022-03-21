@@ -38,7 +38,7 @@ function Profile({ history }) {
               data-testid="profile-logout-btn"
               onClick={ () => {
                 localStorage.clear();
-                document.title = 'Delicious Recipes';
+                document.title = 'Rappidíssimo';
                 history.push('/');
               } }
             >

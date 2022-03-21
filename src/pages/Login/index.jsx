@@ -33,7 +33,8 @@ export default function Login() {
     >
       <div className="max-w-[90%] w-[350px] bg-black/40 p-8 rounded-xl z-1">
         <div>
-          <img src={ logo } alt="Logo" />
+          <img src={ logo } alt="Rappidíssimo Logo" />
+          <h2 className="font-logo text-center text-white">Rappidíssimo</h2>
           <label
             className="block text-sm font-bold mb-2 text-white z-10"
             htmlFor="username"

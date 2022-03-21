@@ -181,6 +181,10 @@
   background-size: cover;
 }
 
+.font-logo {
+  font-family: 'Lily Script One', cursive;
+}
+
 body {
   overflow-x: hidden;
   margin: 0;
