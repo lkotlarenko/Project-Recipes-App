@@ -2,7 +2,8 @@
 ### _A [Trybe](https://www.betrybe.com/) Project_
 
 ---
-## _Try our [Rappidíssimo]() demo build 🚀_
+## _Try our [Rappidíssimo](https://rappidissimo.netlify.app) demo build 🚀_
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bd135f0e-0eb3-4e59-a04d-7931a96b43e8/deploy-status)](https://app.netlify.com/sites/rappidissimo/deploys)
 
 ## Team
 
