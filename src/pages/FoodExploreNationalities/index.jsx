@@ -24,8 +24,6 @@ function FoodExploreNationality() {
       }
     };
     getNationalities();
-    // apaga warning lint
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getMeals = async (area) => {
