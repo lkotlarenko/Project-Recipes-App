@@ -20,7 +20,7 @@
     "react-dom": "^16.13.1",
     "react-logger": "^1.1.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.0",
     "websocket-extensions": ">=0.1.4"
   },
   "scripts": {
@@ -52,14 +52,14 @@
   "devDependencies": {
     "autoprefixer": "^10.4.2",
     "clipboardy": "^2.1.0",
-    "eslint": "^8.11.0",
+    "eslint": "^7.11.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "fs-extra": "^9.0.1",
     "postcss": "^8.4.8",
     "react-player": "^2.9.0",
     "stylelint": "^14.6.0",
     "stylelint-order": "^5.0.0",
-    "tailwindcss": "^1.1.4"
+    "tailwindcss": "^3.0.23"
   },
   "jest": {
     "coveragePathIgnorePatterns": [
