@@ -2,7 +2,7 @@
   "name": "rappidissimo",
   "version": "0.1.0",
   "engines": {
-    "node": "14.x"
+    "node": "16.x"
   },
   "dependencies": {
     "@sheerun/mutationobserver-shim": "^0.3.3",
@@ -20,7 +20,7 @@
     "react-dom": "^16.13.1",
     "react-logger": "^1.1.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "5.0.0",
+    "react-scripts": "^4.0.3",
     "websocket-extensions": ">=0.1.4"
   },
   "scripts": {
@@ -57,9 +57,9 @@
     "fs-extra": "^9.0.1",
     "postcss": "^8.4.8",
     "react-player": "^2.9.0",
-    "stylelint": "^13.8.0",
-    "stylelint-order": "^4.1.0",
-    "tailwindcss": "^3.0.23"
+    "stylelint": "^14.6.0",
+    "stylelint-order": "^5.0.0",
+    "tailwindcss": "^1.1.4"
   },
   "jest": {
     "coveragePathIgnorePatterns": [
