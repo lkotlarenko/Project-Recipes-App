@@ -5,15 +5,16 @@ import Footer from '../../components/Footer';
 import '../../index.css';
 
 function Profile({ history }) {
-  const userEmail = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('user'));
   document.title = 'Profile';
+
   return (
     <div className="bgcenter">
       <HeaderWithSearch name="Profile" verific={ false } />
-      {userEmail && (
+      {user && (
         <div>
-          <p data-testid="profile-email" className="m-3 text-xl text-center font-bold">
-            {`Email: ${userEmail.email}`}
+          <p data-testid="profile-username" className="m-3 text-xl text-center font-bold">
+            {`Hello ${user.username} :D`}
           </p>
           <div className="flex flex-col md:flex-row w-[90vw] justify-evenly">
             <button

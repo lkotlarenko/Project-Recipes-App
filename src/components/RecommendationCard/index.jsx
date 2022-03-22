@@ -37,14 +37,14 @@ function RecommendationCard(props) {
                       src={ thumb }
                       alt={ name }
                       data-testid={ `${index}-card-img` }
-                      className="rounded-lg"
+                      className="rounded-lg recommended__img"
                     />
-                    <span
+                    <p
                       data-testid={ `${index}-recomendation-title` }
-                      className="recommended__title"
+                      className="recommended__title truncate"
                     >
                       { name }
-                    </span>
+                    </p>
                   </div>
                 </button>
               </div>

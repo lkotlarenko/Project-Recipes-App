@@ -10,7 +10,7 @@ function ProviderApp({ children }) {
   const [details, setDetails] = useState([]);
   const [drinkCategories, setDrinkCategories] = useState([]);
   const [drinks, setDrinks] = useState([]);
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [filterDrinkCategory, setFilterDrinkCategory] = useState('all');
   const [filterFoodCategory, setFilterFoodCategory] = useState('all');
   const [foodCategories, setFoodCategories] = useState([]);
@@ -22,7 +22,6 @@ function ProviderApp({ children }) {
   const [lastDrinkCategory, setLastDrinkCategory] = useState('');
   const [lastFoodCategory, setLastFoodCategory] = useState('');
   const [nationalities, setNationalities] = useState([]);
-  const [password, setPassword] = useState('');
   const [progress, setProgress] = useState((segment === 'in-progress'));
   const [radioFilter, setRadioFilter] = useState('name');
   const [recipeDetails, setRecipeDetails] = useState({});
@@ -85,7 +84,6 @@ function ProviderApp({ children }) {
     details,
     drinkCategories,
     drinks,
-    email,
     foodCategories,
     foods,
     ingredients,
@@ -95,19 +93,18 @@ function ProviderApp({ children }) {
     lastDrinkCategory,
     lastFoodCategory,
     nationalities,
-    password,
     progress,
     radioFilter,
     recipeDetails,
     searchButton,
     searchName,
+    username,
     changeButtonSearch,
     changeSearchName,
     handleDetails,
     handleIngredients,
     setCurrentPage,
     setDrinks,
-    setEmail,
     setFilterDrinkCategory,
     setFilterFoodCategory,
     setFoods,
@@ -117,11 +114,11 @@ function ProviderApp({ children }) {
     setLastDrinkCategory,
     setLastFoodCategory,
     setNationalities,
-    setPassword,
     setProgress,
     setRadioFilter,
     setRecipeDetails,
     setSearchButton,
+    setUsername,
   };
 
   return (

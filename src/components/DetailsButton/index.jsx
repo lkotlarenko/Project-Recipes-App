@@ -22,7 +22,7 @@ function DetailsButton(props) {
   const day = String(data.getDate()).padStart(2, '0');
   const month = String(data.getMonth() + 1).padStart(2, '0');
   const year = data.getFullYear();
-  const arrysTags = (newURL === 'Drink') ? '' : detailedItem.strTags.split(',');
+  const arrysTags = (newURL === 'Drink') ? '' : detailedItem?.strTags?.split(',');
   const favoriteRecipe = {
     id: currentItemId,
     type: newTerm,
@@ -59,6 +59,7 @@ function DetailsButton(props) {
           } else {
             setProgress(true);
             history.push(`/${url}/${recipeId}/in-progress`);
+            window.scrollTo(0, 10)
           }
         } }
       >
