@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player/youtube';
 import ContextApp from '../../context/ContextApp';
 import DetailsButton from '../DetailsButton';
-import RecommendationCard from '../RecommendationCard';
-import FavShareButtons from '../FavShareButtons';
 import IngredientsList from '../IngredientsList';
+import FavShareButtons from '../FavShareButtons';
+import RecommendationCard from '../RecommendationCard';
 import '../../index.css';
 import { ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT,
   NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN } from '../../helpers/constants';
@@ -89,7 +89,7 @@ function DetailsCard() {
               className="foods__video"
               config={ {
                 youtube: {
-                  playerVars: { origin: 'http://localhost:3000/', showinfo: 0 },
+                  playerVars: { origin: 'https://rappidissimo.netlify.app/', showinfo: 0 },
                 },
               } }
             /> }

@@ -82,14 +82,17 @@
   .recommended {
     @apply m-5 mb-16 max-w-full overflow-hidden;
   }
+  .recommended__img {
+    @apply max-w-[160px];
+  }
   .recommended__frame {
     @apply flex m-1 overflow-x-scroll;
   }
   .recommended__card {
-    @apply min-w-[45vw] p-5 md:min-w-[25vw] lg:min-w-[18vw];
+    @apply p-5;
   }
   .recommended__title {
-    @apply text-2xl;
+    @apply text-lg;
   }
   .favShareBtn {
     @apply flex flex-row;
